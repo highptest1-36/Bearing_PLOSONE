@@ -1,0 +1,19 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Selective diagnosis on PU-BD5 at matched bearing coverage.}}
+{\footnotesize
+\begin{tabular}{|p{3.20cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|}
+\hline
+Base model & Score & AURC & Risk@12/15 (errors) & Risk@9/15 (errors) & Error-det. AUROC & Errors \\ \hline
+A4 & R1 & 0.367 & 0.417 (5) & 0.444 (4) & 0.500 & 6 \\ \hline
+A4 & R2 & 0.401 & 0.417 (5) & 0.444 (4) & 0.426 & 6 \\ \hline
+A4 & R3 & 0.234 & 0.333 (4) & 0.333 (3) & 0.722 & 6 \\ \hline
+A4 & R4 & 0.148 & 0.333 (4) & 0.222 (2) & 0.889 & 6 \\ \hline
+B1-V3-4s & R1 & 0.075 & 0.167 (2) & 0.111 (1) & 0.778 & 3 \\ \hline
+B1-V3-4s & R2 & 0.114 & 0.167 (2) & 0.222 (2) & 0.667 & 3 \\ \hline
+B1-V3-4s & R3 & 0.146 & 0.250 (3) & 0.333 (3) & 0.500 & 3 \\ \hline
+B1-V3-4s & R4 & 0.114 & 0.250 (3) & 0.222 (2) & 0.611 & 3 \\ \hline
+\end{tabular}}
+\begin{flushleft} R1 max probability, R2 negative entropy, R3 evidence clarity, R4 physics-evidence-aware score (fitted on inner OOF). \end{flushleft}
+\label{tab:selective}
+\end{table}

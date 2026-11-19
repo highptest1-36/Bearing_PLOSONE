@@ -1,0 +1,89 @@
+{
+  "counts": {
+    "by_group": {
+      "OR_artificial": 7,
+      "healthy": 6,
+      "IR_real": 6,
+      "OR_real": 5,
+      "IR_artificial": 5,
+      "multiple_real": 3
+    },
+    "by_origin": {
+      "real": 14,
+      "artificial": 12,
+      "healthy": 6
+    },
+    "by_label3": {
+      "OR": 12,
+      "IR": 11,
+      "H": 6,
+      "(multiple: IR+OR)": 3
+    },
+    "manufacturer_x_group": {
+      "FAG": {
+        "IR_artificial": 0,
+        "IR_real": 2,
+        "OR_artificial": 0,
+        "OR_real": 2,
+        "healthy": 0,
+        "multiple_real": 2
+      },
+      "IBU": {
+        "IR_artificial": 3,
+        "IR_real": 0,
+        "OR_artificial": 5,
+        "OR_real": 1,
+        "healthy": 6,
+        "multiple_real": 0
+      },
+      "MTK": {
+        "IR_artificial": 2,
+        "IR_real": 4,
+        "OR_artificial": 2,
+        "OR_real": 2,
+        "healthy": 0,
+        "multiple_real": 1
+      }
+    },
+    "year_x_group": {
+      "2014": {
+        "IR_artificial": 1,
+        "IR_real": 5,
+        "OR_artificial": 7,
+        "OR_real": 4,
+        "healthy": 0,
+        "multiple_real": 1
+      },
+      "2015": {
+        "IR_artificial": 4,
+        "IR_real": 1,
+        "OR_artificial": 0,
+        "OR_real": 1,
+        "healthy": 6,
+        "multiple_real": 2
+      }
+    }
+  },
+  "comparison": {
+    "table10_members_equal_BD5_members": true,
+    "table10_rows_equal_BD5_rows": true,
+    "paper_table10_protocol": "5-fold-style: 'three data sets from each class were used for training and the other two for testing, resulting in 10 combinations' (C(5,3)=10); no validation set described",
+    "implemented_PU_BD5": "5 folds; test = 1 row, validation = next row, train = 3 rows; each bearing tested once",
+    "implemented_V2.1": "outer 5 folds (test = 1 row, train = 4 rows); inner 4 folds leave-one-row-out inside the 4 training rows",
+    "A2R_vs_table8": {
+      "train_in_A2R_not_T8": [
+        "K003",
+        "K004",
+        "K005",
+        "KA08",
+        "KA09"
+      ],
+      "T8_train_not_in_A2R_train": [],
+      "test_in_A2R_not_T8": [
+        "KI04"
+      ],
+      "T8_test_not_in_A2R": []
+    },
+    "row_pairing_note": "BD5 rows pair the i-th listed bearing of each class in Table 10; the paper does not state that rows are meaningful units. The 10-combination count implies the paper also moved bearings in row-coupled sets (otherwise 10^3 combinations)."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "dataset_dir": "01_RAW_DATA/Vibration, Acoustic, Temperature, and Motor Current Dataset of Rotating Machine Under Varying Load Conditions for Fault Diagnosis",
+  "n_files": 98,
+  "by_modality": {
+    "acoustic": 5,
+    "archive": 3,
+    "current_temp": 45,
+    "vibration": 45
+  },
+  "archive_entries_not_extracted": [],
+  "crc_mismatches": [],
+  "files_not_in_archive": [],
+  "duplicate_content_groups": [],
+  "archives": {
+    "vibration": {
+      "file": "vibration.zip",
+      "sha256": "df73fa80371a2ad3c983825044447b7772fcefd1db2ac409b2b298b533e4659f",
+      "n_entries": 45
+    },
+    "current_temp": {
+      "file": "current,temp.zip",
+      "sha256": "7caa22152ff1fd673a6a3a9614f95fabd2890c6aea0860b40a1f5b27eabb59d6",
+      "n_entries": 45
+    },
+    "acoustic": {
+      "file": "acoustic.zip",
+      "sha256": "5dd1371ccec00729498e2d151df13593f6400fdced8895481ff6a8a945a5962f",
+      "n_entries": 5
+    }
+  },
+  "python": "3.10.6",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "generated": "2026-11-18 19:48:02"
+}

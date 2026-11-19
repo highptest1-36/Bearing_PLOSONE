@@ -1,0 +1,16 @@
+bearing,true,damage,B1,B0,B2,B3,B1_default_C1,B3_default,B2_s42,B2_s43,B2_s44,B3_s42,B3_s43,B3_s44,B3_default_s42,B3_default_s43,B3_default_s44,META_manufacturer_only,META_year_only
+K001,H,run-in only L0,H,H,H,H,H,H,H,H,H,OR,H,H,H,H,H,H,H
+K002,H,run-in only L0,H,H,H,OR,H,OR,H,H,H,H,OR,OR,H,OR,OR,H,H
+K003,H,run-in only L0,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H
+K004,H,run-in only L0,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H
+K005,H,run-in only L0,OR,H,OR,H,OR,H,OR,OR,OR,H,H,H,H,H,H,H,H
+KA04,OR,fatigue: pitting L1,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,IR,IR
+KA15,OR,plastic deform.: indentations L1,H,H,H,IR,H,IR,H,H,H,IR,IR,IR,IR,IR,IR,IR,IR
+KA16,OR,fatigue: pitting L2,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,IR,IR
+KA22,OR,fatigue: pitting L1,H,H,H,IR,H,OR,H,H,H,IR,OR,IR,OR,OR,IR,H,IR
+KA30,OR,plastic deform.: indentations L1,OR,H,OR,IR,OR,IR,OR,OR,OR,IR,IR,IR,IR,IR,IR,IR,H
+KI04,IR,fatigue: pitting L1,IR,IR,IR,OR,IR,OR,IR,IR,IR,OR,OR,OR,OR,OR,OR,IR,H
+KI14,IR,fatigue: pitting L1,IR,H,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR
+KI16,IR,fatigue: pitting L3,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,OR,IR
+KI18,IR,fatigue: pitting L2,IR,IR,IR,IR,IR,IR,IR,IR,IR,IR,OR,IR,IR,IR,IR,IR,IR
+KI21,IR,fatigue: pitting L1,IR,H,IR,OR,IR,OR,IR,IR,IR,OR,OR,OR,OR,OR,OR,OR,OR

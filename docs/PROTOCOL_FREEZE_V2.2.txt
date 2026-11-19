@@ -1,0 +1,4 @@
+RESEARCH_PROTOCOL_V2.2.md frozen (amends V2 60d0c66a53933394 and V2.1 15343677c65f1e9a; both unchanged)
+UTC time: 2026-11-18T20:24:05Z
+SHA-256: 078d726b13e910a2244545cf63f37601ae85a02740ebf0e56579efda5a657509
+Inspected before freeze: all Phase 1-3A outputs; Ottawa paper; Ottawa file listing and variable schema only (no Ottawa signals/speeds/labels analysed).

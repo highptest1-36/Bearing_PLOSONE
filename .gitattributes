@@ -1,0 +1,2 @@
+# Store every file byte-for-byte: protocols, manifests and code are identified by SHA-256 hashes
+* -text

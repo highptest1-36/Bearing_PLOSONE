@@ -1,0 +1,1 @@
+{"fs_raw": 25600.0, "fs_env": 25600.0, "band": [1000.0, 10000.0], "order_spr": 512, "order_nrev": 48, "n": 1620, "channels": ["x_housing_A", "y_housing_A"]}

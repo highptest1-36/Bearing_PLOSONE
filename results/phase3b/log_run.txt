@@ -1,0 +1,27 @@
+[03:36:17] V3 scans (label-free) ...
+[03:36:21] loading raw windows (float16) ...
+[03:38:12]   inner O1-I2 done (112s)
+[03:40:11]   inner O1-I3 done (230s)
+[03:42:13]   inner O1-I4 done (353s)
+[03:44:22]   inner O1-I5 done (481s)
+[03:52:35] O1 finished in 974s
+[03:54:33]   inner O2-I1 done (119s)
+[03:56:40]   inner O2-I3 done (246s)
+[03:58:48]   inner O2-I4 done (373s)
+[04:00:54]   inner O2-I5 done (500s)
+[04:08:52] O2 finished in 977s
+[04:10:43]   inner O3-I1 done (111s)
+[04:12:34]   inner O3-I2 done (222s)
+[04:14:33]   inner O3-I4 done (341s)
+[04:16:30]   inner O3-I5 done (458s)
+[04:24:05] O3 finished in 913s
+[04:25:56]   inner O4-I1 done (111s)
+[04:27:49]   inner O4-I2 done (224s)
+[04:29:41]   inner O4-I3 done (336s)
+[04:31:38]   inner O4-I5 done (453s)
+[04:39:11] O4 finished in 907s
+[04:41:01]   inner O5-I1 done (110s)
+[04:42:53]   inner O5-I2 done (222s)
+[04:44:45]   inner O5-I3 done (334s)
+[04:46:37]   inner O5-I4 done (445s)
+[04:54:10] O5 finished in 899s

@@ -1,0 +1,5 @@
+setting,n,auroc_contrast_OR_vs_IR,auroc_family_damaged_vs_healthy
+N09_M07_F10,1196,0.85,0.63
+N15_M01_F10,1196,0.896,0.812
+N15_M07_F04,1193,0.862,0.786
+N15_M07_F10,1196,0.898,0.817

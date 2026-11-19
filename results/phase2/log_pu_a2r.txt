@@ -1,0 +1,15 @@
+[00:09:01] A2R physics: regions {'centre': {'BPFO': 0.0, 'BPFI': -0.0016534289359493}, 'half': {'BPFO': 0.035, 'BPFI': 0.005}, 'n_used': {'BPFO': 1329, 'BPFI': 354}, 'fallback': {'BPFO': False, 'BPFI': False}} | test AUROC {'auroc_contrast_OR_vs_IR': 0.8934761475062762, 'auroc_family_damaged_vs_healthy': 0.5842366861793261}
+[00:09:01] A2R|3way|S1_speed_LR|s42: test win macroF1 0.154 group acc [0.333, 0.167]
+[00:09:01] A2R|3way|S2_rms_LR|s42: test win macroF1 0.225 group acc [0.25, 0.312]
+[00:09:03] A2R|3way|C1_hand_RF|s42: test win macroF1 0.238 group acc [0.333, 0.25]
+[00:09:04] A2R|3way|C2_hand_SVM|s42: test win macroF1 0.517 group acc [0.583, 0.562]
+[00:09:04] A2R|3way|P1_phys_LR|s42: test win macroF1 0.538 group acc [0.667, 0.667]
+[00:09:33] A2R|3way|D1_cnn_raw|s42: ep 1 val 0.678 test win macroF1 0.661 group acc [0.583, 0.604] (18s)
+[00:10:08] A2R|3way|D1_cnn_raw|s43: ep 0 val 0.725 test win macroF1 0.607 group acc [0.583, 0.562] (32s)
+[00:10:47] A2R|3way|D1_cnn_raw|s44: ep 1 val 0.523 test win macroF1 0.550 group acc [0.583, 0.521] (37s)
+[00:11:22] A2R|3way|D2_cnn_order|s42: ep 3 val 0.662 test win macroF1 0.686 group acc [0.583, 0.604] (30s)
+[00:11:55] A2R|3way|D2_cnn_order|s43: ep 3 val 0.652 test win macroF1 0.648 group acc [0.583, 0.604] (31s)
+[00:12:34] A2R|3way|D2_cnn_order|s44: ep 5 val 0.556 test win macroF1 0.535 group acc [0.583, 0.562] (38s)
+[00:13:01] A2R|3way|D3_cnn_order_rmsnorm|s42: ep 0 val 0.639 test win macroF1 0.586 group acc [0.583, 0.542] (22s)
+[00:13:27] A2R|3way|D3_cnn_order_rmsnorm|s43: ep 1 val 0.663 test win macroF1 0.727 group acc [0.75, 0.625] (25s)
+[00:14:12] A2R|3way|D3_cnn_order_rmsnorm|s44: ep 8 val 0.545 test win macroF1 0.657 group acc [0.667, 0.625] (44s)

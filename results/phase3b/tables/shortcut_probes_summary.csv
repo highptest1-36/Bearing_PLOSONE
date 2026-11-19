@@ -1,0 +1,21 @@
+representation,target,mean,min,max
+A4_latent,manufacturer_IBU,0.872,0.82,0.909
+A4_latent,origin_artificial(damaged only),0.839,0.75,0.972
+A4_latent,setting_4class_window_acc,0.447,0.415,0.48
+A4_latent,speed_900rpm_window_auroc,0.901,0.848,0.944
+A4_latent,year_2015,0.839,0.717,0.99
+A6_predicted_concepts,manufacturer_IBU,0.932,0.88,0.95
+A6_predicted_concepts,origin_artificial(damaged only),0.589,0.278,0.861
+A6_predicted_concepts,setting_4class_window_acc,0.457,0.362,0.563
+A6_predicted_concepts,speed_900rpm_window_auroc,0.84,0.717,0.957
+A6_predicted_concepts,year_2015,0.757,0.616,0.99
+B3_embedding,manufacturer_IBU,0.938,0.91,0.97
+B3_embedding,origin_artificial(damaged only),0.75,0.611,1.0
+B3_embedding,setting_4class_window_acc,0.493,0.447,0.544
+B3_embedding,speed_900rpm_window_auroc,0.929,0.86,0.991
+B3_embedding,year_2015,0.822,0.727,0.885
+V3_concepts_4s,manufacturer_IBU,0.706,0.58,0.85
+V3_concepts_4s,origin_artificial(damaged only),0.461,0.111,0.667
+V3_concepts_4s,setting_4class_window_acc,0.304,0.276,0.336
+V3_concepts_4s,speed_900rpm_window_auroc,0.618,0.572,0.7
+V3_concepts_4s,year_2015,0.898,0.838,0.979

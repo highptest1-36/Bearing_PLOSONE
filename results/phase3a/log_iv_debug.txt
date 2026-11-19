@@ -1,0 +1,45 @@
+[O1] preparing
+  O1 KA04 N09_M07_F10 done (9s)
+  O1 KA04 N15_M01_F10 done (15s)
+  O1 KA04 N15_M07_F04 done (21s)
+  O1 KA04 N15_M07_F10 done (28s)
+O1 KA04 done
+                            n_bearings  d_target_family_harm_median  d_other_family_harm_median  dB1_median  dB3_median
+relation     kind strength                                                                                             
+other_family Ce   0.5                1                       -0.001                       0.013       0.000      -0.000
+                  1.0                1                        0.004                       0.034       0.000       0.000
+             Cw   0.5                1                       -0.001                       0.004       0.000       0.000
+                  1.0                1                       -0.002                       0.016       0.000      -0.000
+             T    0.5                1                       -0.981                       0.000       0.007       0.000
+                  1.0                1                       -1.686                       0.003       0.017       0.000
+own_family   Ce   0.5                1                        0.223                       0.131       0.002      -0.000
+                  1.0                1                        0.557                       0.530      -0.002      -0.000
+             Cw   0.5                1                       -0.000                      -0.000       0.000      -0.000
+                  1.0                1                        0.004                      -0.000       0.000      -0.000
+             T    0.5                1                       -4.484                      -0.009      -0.084       0.002
+                  1.0                1                      -14.152                       0.187      -0.370       0.003
+               in_band_snr_db_median  clip_fraction_max  oob_rel_change_max  total_energy_ratio_median  energy_ratio_vs_target_median  energy_ratio_vs_target_p10  overlap_shaft_guard_hz_max  overlap_other_family_hz_max
+kind strength                                                                                                                                                                                                             
+Ce   0.5                     37.4233             0.0020              0.0025                     0.9993                         0.5891                      0.0819                      3.2981                          0.0
+     1.0                     31.4040             0.0074              0.0025                     0.9988                         0.6161                      0.0980                      3.2981                          0.0
+Cw   0.5                     46.8221             0.0001              0.0152                     0.9999                            NaN                         NaN                      3.2981                          0.0
+     1.0                     40.8017             0.0003              0.0152                     0.9998                            NaN                         NaN                      3.2981                          0.0
+T    0.5                     31.9848             0.0053              0.0033                     0.9947                            NaN                         NaN                      3.2981                          0.0
+     1.0                     25.9908             0.0215              0.0032                     0.9921                            NaN                         NaN                      3.2981                          0.0
+         d_own_Ce  d_own_Cw  d_own_T  dB1_Ce  dB1_Cw  dB1_T  dB3_Ce  dB3_Cw  dB3_T  dB1_T_minus_Ce  dB1_T_minus_Cw  dB3_T_minus_Ce  dB3_T_minus_Cw  d_own_T_minus_Ce  d_own_T_minus_Cw
+bearing                                                                                                                                                                               
+KA04        0.557     0.004  -14.152  -0.002     0.0  -0.37    -0.0    -0.0  0.003          -0.369           -0.37           0.003           0.003           -14.709           -14.156
+                   d_own    dB1    dB3
+setting     kind                      
+N09_M07_F10 Ce     5.799  0.082 -0.001
+            Cw     0.158  0.002  0.000
+            T    -12.049 -0.211 -0.004
+N15_M01_F10 Ce     0.418 -0.022  0.001
+            Cw     0.001  0.000 -0.000
+            T    -14.894 -0.412  0.004
+N15_M07_F04 Ce     0.531 -0.004 -0.001
+            Cw     0.003 -0.000 -0.000
+            T    -14.469 -0.397  0.028
+N15_M07_F10 Ce     0.148 -0.001  0.000
+            Cw    -0.003 -0.000 -0.000
+            T    -16.989 -0.404  0.003

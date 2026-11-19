@@ -1,0 +1,10 @@
+dataset,protocol,fold,BPFO_centre_pct,BPFO_half_pct,BPFO_n_cal,BPFO_fallback,BPFI_centre_pct,BPFI_half_pct,BPFI_n_cal,BPFI_fallback,train_auroc_contrast_OR_vs_IR,train_auroc_family_damaged_vs_healthy,test_auroc_contrast_OR_vs_IR,test_auroc_family_damaged_vs_healthy,test_bearings
+kaist,A_LOLO,A_test0Nm,1.9621,1.299,276,False,-1.1919,0.5,276,False,1.0,1.0,1.0,1.0,
+kaist,A_LOLO,A_test2Nm,1.9565,1.271,276,False,-1.2038,0.5,276,False,1.0,1.0,1.0,1.0,
+kaist,A_LOLO,A_test4Nm,1.4984,2.0016,276,False,-1.1977,0.5,276,False,1.0,1.0,1.0,1.0,
+pu,PU_A2R,A2R,0.0,3.5,1329,False,-0.1653,0.5,354,False,0.9411,0.8534,0.8935,0.5842,"K001,KA04,KA15,KA16,KA22,KA30,KI04,KI14,KI16,KI17,KI18,KI21"
+pu,PU_BD5,BD5_f1,0.3296,0.5,432,False,-0.1744,1.2636,481,False,0.8408,0.7811,0.9986,0.9908,"K001,KA04,KI04"
+pu,PU_BD5,BD5_f2,-0.4386,0.5,429,False,-0.1731,0.5,750,False,0.9715,0.8412,0.7169,0.4506,"K002,KA15,KI14"
+pu,PU_BD5,BD5_f3,-0.4386,0.5,432,False,-0.1826,0.5,499,False,0.9136,0.7511,0.9596,0.8559,"K003,KA16,KI16"
+pu,PU_BD5,BD5_f4,0.2866,1.4955,648,False,-0.1678,0.5,404,False,0.9018,0.704,0.9882,0.7698,"K004,KA22,KI18"
+pu,PU_BD5,BD5_f5,0.3299,0.5,342,False,-0.165,0.5,404,False,0.8255,0.6644,0.8612,0.8102,"K005,KA30,KI21"

@@ -1,0 +1,13 @@
+Generated 2026-11-18 for the Phase 1 data audit
+Python 3.10.6 (Windows-10-10.0.26300-SP0)
+CPU threads: 16; RAM: 15.8 GB total (~3 GB free during audit; files processed sequentially)
+GPU: NVIDIA GeForce RTX 3060 Laptop GPU, 6144 MiB, 617.14 (not used in Phase 1)
+Packages:
+  numpy==1.26.4
+  scipy==1.15.3
+  pandas==2.3.0
+  matplotlib==3.10.9
+  nptdms==1.10.0
+  h5py==3.14.0
+  pytest==8.4.1
+  torch==2.7.1+cu126

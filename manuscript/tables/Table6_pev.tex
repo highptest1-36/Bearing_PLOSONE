@@ -1,0 +1,27 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Physics-evidence verification on the 10 faulty PU-BD5 bearings (own fault family, strength 1.0).}}
+{\footnotesize
+\begin{tabular}{|p{3.20cm}|>{\centering\arraybackslash}p{2.80cm}|>{\centering\arraybackslash}p{2.80cm}|>{\centering\arraybackslash}p{2.80cm}|>{\centering\arraybackslash}p{2.80cm}|}
+\hline
+Quantity & Control & Targeted $-$ control & 95\% CI & Bearings T $<$ C \\ \hline
+target-family evidence (dB) & energy-matched & -9.288 & [-12.895, -5.744] & 10/10 \\ \hline
+target-family evidence (dB) & width-matched & -9.054 & [-12.339, -5.639] & 10/10 \\ \hline
+$\Delta p$ B1-V3-4s & energy-matched & -0.409 & [-0.623, -0.206] & 10/10 \\ \hline
+$\Delta p$ B1-V3-4s & width-matched & -0.409 & [-0.626, -0.209] & 10/10 \\ \hline
+$\Delta p$ A2 & energy-matched & -0.386 & [-0.585, -0.205] & 10/10 \\ \hline
+$\Delta p$ A2 & width-matched & -0.385 & [-0.583, -0.203] & 10/10 \\ \hline
+$\Delta p$ A4 PAVE-Net & energy-matched & -0.103 & [-0.183, -0.042] & 10/10 \\ \hline
+$\Delta p$ A4 PAVE-Net & width-matched & -0.100 & [-0.177, -0.042] & 10/10 \\ \hline
+$\Delta p$ A6 concept bottleneck & energy-matched & -0.008 & [-0.018, -0.001] & 9/10 \\ \hline
+$\Delta p$ A6 concept bottleneck & width-matched & -0.007 & [-0.016, -0.001] & 9/10 \\ \hline
+$\Delta p$ B3 CNN & energy-matched & +0.005 & [+0.000, +0.011] & 3/10 \\ \hline
+$\Delta p$ B3 CNN & width-matched & +0.005 & [-0.000, +0.013] & 5/10 \\ \hline
+A4 physics logit & energy-matched & -1.108 & [-1.503, -0.701] & 10/10 \\ \hline
+A4 physics logit & width-matched & -1.107 & [-1.499, -0.702] & 10/10 \\ \hline
+A4 latent contribution & energy-matched & +0.127 & [-0.166, +0.424] & 4/10 \\ \hline
+A4 latent contribution & width-matched & +0.130 & [-0.163, +0.423] & 4/10 \\ \hline
+\end{tabular}}
+\begin{flushleft} Bearing means over 20 records per bearing; bootstrap CI over bearings. $\Delta p$: change in probability of the true class. \end{flushleft}
+\label{tab:pev}
+\end{table}

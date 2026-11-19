@@ -1,0 +1,7 @@
+kind,strength,in_band_snr_db_median,clip_max,oob_max,energy_ratio_total_median,energy_ratio_vs_target_median,energy_ratio_vs_target_p10,overlap_other_family_hz_max,overlap_shaft_guard_hz_max
+Ce,0.5,36.5804,0.0241,0.0154,0.999,1.2066,0.4457,1.4385,8.5457
+Ce,1.0,30.8604,0.0772,0.0154,0.9985,1.1924,0.5026,1.4385,8.5457
+Cw,0.5,41.8263,0.0241,0.0128,0.9996,,,1.4385,8.5457
+Cw,1.0,35.8062,0.0772,0.0128,0.9994,,,1.4385,8.5457
+T,0.5,39.163,0.0164,0.0118,0.9995,,,1.4385,8.5457
+T,1.0,33.1433,0.0559,0.0118,0.9991,,,1.4385,8.5457

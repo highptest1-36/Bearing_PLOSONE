@@ -1,0 +1,128 @@
+{
+ "healthy_false_alarms_by_later_fault_group_B1-V3-4s": {
+  "IR-bearing (1-5)": "5/5",
+  "OR-bearing (6-10)": "2/5",
+  "ball/cage (11-20)": "4/10"
+ },
+ "B0_tau_dB_final": 12.312617460149374,
+ "ottawa_concept_medians_by_group_state": [
+  {
+   "bearing_fault_type": "BALL",
+   "state_name": "developing",
+   "BPFO_harm": 6.62,
+   "BPFI_harm": 9.85,
+   "contrast": -2.51,
+   "rpm_sample0": 1720.0
+  },
+  {
+   "bearing_fault_type": "BALL",
+   "state_name": "faulty",
+   "BPFO_harm": 4.7,
+   "BPFI_harm": 9.18,
+   "contrast": -5.28,
+   "rpm_sample0": 1722.0
+  },
+  {
+   "bearing_fault_type": "BALL",
+   "state_name": "healthy",
+   "BPFO_harm": 9.69,
+   "BPFI_harm": 10.09,
+   "contrast": -1.56,
+   "rpm_sample0": 1720.0
+  },
+  {
+   "bearing_fault_type": "CAGE",
+   "state_name": "developing",
+   "BPFO_harm": 4.9,
+   "BPFI_harm": 7.54,
+   "contrast": -3.03,
+   "rpm_sample0": 1780.0
+  },
+  {
+   "bearing_fault_type": "CAGE",
+   "state_name": "faulty",
+   "BPFO_harm": 4.72,
+   "BPFI_harm": 9.4,
+   "contrast": -4.07,
+   "rpm_sample0": 1767.0
+  },
+  {
+   "bearing_fault_type": "CAGE",
+   "state_name": "healthy",
+   "BPFO_harm": 6.02,
+   "BPFI_harm": 11.4,
+   "contrast": -5.27,
+   "rpm_sample0": 1780.0
+  },
+  {
+   "bearing_fault_type": "IR",
+   "state_name": "developing",
+   "BPFO_harm": 7.55,
+   "BPFI_harm": 19.43,
+   "contrast": -11.87,
+   "rpm_sample0": 1799.0
+  },
+  {
+   "bearing_fault_type": "IR",
+   "state_name": "faulty",
+   "BPFO_harm": 7.39,
+   "BPFI_harm": 19.81,
+   "contrast": -11.52,
+   "rpm_sample0": 1792.0
+  },
+  {
+   "bearing_fault_type": "IR",
+   "state_name": "healthy",
+   "BPFO_harm": 12.53,
+   "BPFI_harm": 12.22,
+   "contrast": -3.32,
+   "rpm_sample0": 1799.0
+  },
+  {
+   "bearing_fault_type": "OR",
+   "state_name": "developing",
+   "BPFO_harm": 35.37,
+   "BPFI_harm": 11.44,
+   "contrast": 19.58,
+   "rpm_sample0": 1818.0
+  },
+  {
+   "bearing_fault_type": "OR",
+   "state_name": "faulty",
+   "BPFO_harm": 31.37,
+   "BPFI_harm": 18.45,
+   "contrast": 17.72,
+   "rpm_sample0": 1818.0
+  },
+  {
+   "bearing_fault_type": "OR",
+   "state_name": "healthy",
+   "BPFO_harm": 5.03,
+   "BPFI_harm": 11.26,
+   "contrast": -7.01,
+   "rpm_sample0": 1818.0
+  }
+ ],
+ "pu_healthy_BPFO_BPFI_harm": {
+  "BPFO_harm": {
+   "count": 300.0,
+   "mean": 7.09,
+   "std": 3.34,
+   "min": -1.27,
+   "25%": 4.29,
+   "50%": 6.74,
+   "75%": 9.85,
+   "max": 15.01
+  },
+  "BPFI_harm": {
+   "count": 320.0,
+   "mean": 9.4,
+   "std": 2.05,
+   "min": 3.71,
+   "25%": 7.83,
+   "50%": 9.19,
+   "75%": 10.99,
+   "max": 14.4
+  }
+ }
+}

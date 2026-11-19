@@ -1,0 +1,33 @@
+bearing,group,label3,origin,component,method,extent_level,combination,characteristic,manufacturer,pitch_diameter_mm,first_measurement,year,n_files,n_unreadable,n_windows_1s,n_order_windows,in_lessmeier_T10,lessmeier_T8_role,PU_A2R_role,BD5_f1,BD5_f2,BD5_f3,BD5_f4,BD5_f5,BD5_times_tested,exclusions_notes
+K001,healthy,H,healthy,-,run-in only,0,-,-,IBU,29.05,2015-09-17 19:34:44,2015,80,0,320,280,True,test,test,test,train,train,train,val,1,
+K002,healthy,H,healthy,-,run-in only,0,-,-,IBU,29.05,2015-03-25 15:45:36,2015,80,0,318,280,True,train,train,val,test,train,train,train,1,
+K003,healthy,H,healthy,-,run-in only,0,-,-,IBU,29.05,2015-09-22 11:41:19,2015,80,0,320,280,True,-,train,train,val,test,train,train,1,
+K004,healthy,H,healthy,-,run-in only,0,-,-,IBU,29.05,2015-10-16 17:11:12,2015,80,0,320,280,True,-,train,train,train,val,test,train,1,
+K005,healthy,H,healthy,-,run-in only,0,-,-,IBU,29.05,2015-10-14 12:37:32,2015,80,0,320,280,True,-,train,train,train,train,val,test,1,
+K006,healthy,H,healthy,-,run-in only,0,-,-,IBU,29.05,2015-10-07 14:05:20,2015,80,0,320,280,False,-,val,-,-,-,-,-,0,not in Lessmeier Table 10 -> not in PU-BD5
+KA01,OR_artificial,OR,artificial,OR,EDM,1,S,single point,MTK,29.05,2014-11-10 10:20:13,2014,80,0,317,280,False,train,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KA03,OR_artificial,OR,artificial,OR,electric engraver,2,S,single point,MTK,29.05,2014-06-05 15:40:42,2014,80,0,319,280,False,-,val,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KA04,OR_real,OR,real,OR,accelerated lifetime; fatigue: pitting,1,S,single point,FAG,28.55,2014-06-10 17:43:58,2014,80,0,319,280,True,test,test,test,train,train,train,val,1,
+KA05,OR_artificial,OR,artificial,OR,electric engraver,1,S,single point,IBU,29.05,2014-11-14 15:52:25,2014,80,0,317,280,False,train,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KA06,OR_artificial,OR,artificial,OR,electric engraver,2,S,single point,IBU,29.05,2014-11-15 09:59:12,2014,80,0,319,280,False,-,val,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KA07,OR_artificial,OR,artificial,OR,drilling,1,S,single point,IBU,29.05,2014-12-23 15:44:42,2014,80,0,319,280,False,train,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KA08,OR_artificial,OR,artificial,OR,drilling,2,S,single point,IBU,29.05,2014-12-29 10:59:40,2014,80,1,315,275,False,-,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R); 1 unreadable file(s) excluded
+KA09,OR_artificial,OR,artificial,OR,drilling,2,S,single point,IBU,29.05,2014-12-29 15:03:30,2014,80,0,316,280,False,-,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KA15,OR_real,OR,real,OR,accelerated lifetime; plastic deform.: indentations,1,S,single point,FAG,28.55,2014-07-29 15:09:30,2014,80,0,317,280,True,test,test,val,test,train,train,train,1,
+KA16,OR_real,OR,real,OR,accelerated lifetime; fatigue: pitting,2,R,single point,MTK,29.05,2014-08-01 09:51:04,2014,80,0,319,280,True,test,test,train,val,test,train,train,1,
+KA22,OR_real,OR,real,OR,accelerated lifetime; fatigue: pitting,1,S,single point,IBU,29.05,2014-08-01 14:44:06,2014,80,0,315,280,True,test,test,train,train,val,test,train,1,
+KA30,OR_real,OR,real,OR,accelerated lifetime; plastic deform.: indentations,1,R,distributed,MTK,29.05,2015-03-27 09:16:49,2015,80,0,319,280,True,test,test,train,train,train,val,test,1,
+KB23,multiple_real,(multiple: IR+OR),real,IR(+OR),accelerated lifetime; fatigue: pitting,2,M,single point,MTK,29.05,2015-03-25 12:21:25,2015,80,0,315,280,False,-,challenge,-,-,-,-,-,0,multiple damage IR+OR: no single 3-class label (challenge only)
+KB24,multiple_real,(multiple: IR+OR),real,IR(+OR),accelerated lifetime; fatigue: pitting,3,M,distributed,FAG,28.55,2015-09-21 11:18:44,2015,80,0,320,280,False,-,challenge,-,-,-,-,-,0,multiple damage IR+OR: no single 3-class label (challenge only)
+KB27,multiple_real,(multiple: IR+OR),real,OR+IR,accelerated lifetime; plastic deform.: indentations,1,M,distributed,FAG,28.55,2014-08-07 10:00:15,2014,80,0,317,280,False,-,challenge,-,-,-,-,-,0,multiple damage IR+OR: no single 3-class label (challenge only)
+KI01,IR_artificial,IR,artificial,IR,EDM,1,S,single point,MTK,29.05,2015-09-18 10:41:13,2015,80,0,320,280,False,train,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KI03,IR_artificial,IR,artificial,IR,electric engraver,1,S,single point,MTK,29.05,2014-06-04 10:49:59,2014,80,0,316,280,False,-,val,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KI04,IR_real,IR,real,IR,accelerated lifetime; fatigue: pitting,1,M,single point,MTK,29.05,2015-07-09 16:20:48,2015,80,0,320,280,True,-,test,test,train,train,train,val,1,
+KI05,IR_artificial,IR,artificial,IR,electric engraver,1,S,single point,IBU,29.05,2015-03-26 11:37:22,2015,80,0,318,280,False,train,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KI07,IR_artificial,IR,artificial,IR,electric engraver,2,S,single point,IBU,29.05,2015-03-26 14:56:48,2015,80,0,318,280,False,train,train,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KI08,IR_artificial,IR,artificial,IR,electric engraver,2,S,single point,IBU,29.05,2015-03-27 12:03:02,2015,80,0,315,280,False,-,val,-,-,-,-,-,0,artificial damage: not in PU-BD5 (used in PU-A2R)
+KI14,IR_real,IR,real,IR,accelerated lifetime; fatigue: pitting,1,M,single point,MTK,29.05,2014-06-12 14:36:44,2014,80,0,320,280,True,test,test,val,test,train,train,train,1,
+KI16,IR_real,IR,real,IR,accelerated lifetime; fatigue: pitting,3,S,single point,FAG,28.55,2014-06-16 13:09:09,2014,80,0,319,280,True,test,test,train,val,test,train,train,1,
+KI17,IR_real,IR,real,IR,accelerated lifetime; fatigue: pitting,1,R,single point,MTK,29.05,2014-06-17 15:59:26,2014,80,0,319,280,False,test,test,-,-,-,-,-,0,not in Lessmeier Table 10 -> not in PU-BD5
+KI18,IR_real,IR,real,IR,accelerated lifetime; fatigue: pitting,2,S,single point,MTK,29.05,2014-06-17 12:37:18,2014,80,0,317,280,True,test,test,train,train,val,test,train,1,
+KI21,IR_real,IR,real,IR,accelerated lifetime; fatigue: pitting,1,S,single point,FAG,28.55,2014-07-29 11:36:38,2014,80,0,318,280,True,test,test,train,train,train,val,test,1,

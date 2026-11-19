@@ -1,0 +1,16 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Fixed training configurations (protocol V2.2).}}
+{\footnotesize
+\begin{tabular}{|p{3.20cm}|>{\centering\arraybackslash}p{2.80cm}|>{\centering\arraybackslash}p{2.80cm}|>{\centering\arraybackslash}p{2.80cm}|>{\centering\arraybackslash}p{2.80cm}|}
+\hline
+Model & Architecture & Optimisation & Batch & Epochs \\ \hline
+B1 (all) & logistic regression & C = 1, balanced, StandardScaler & - & - \\ \hline
+B2-V3 & MLP 2$\times$64, dropout 0.1 & AdamW lr $10^{-3}$, wd $10^{-2}$ & 256 & 20 \\ \hline
+B3 & CNN-1D (6 blocks, 0.23 M) & AdamW lr $10^{-3}$, wd $10^{-2}$, cosine, AMP & 64 & 25 \\ \hline
+A1 to A4 & linear physics head (+ gate, + bounded latent) & AdamW lr $10^{-3}$, wd $10^{-2}$; $B$ = 3, $\gamma$ = 1, $\beta$ = 0.05 & 64 & 25 \\ \hline
+A6 & CNN-1D $\rightarrow$ 8 concepts $\rightarrow$ linear & AdamW lr $10^{-3}$, wd $10^{-2}$; $\lambda_c$ = 1 (masked Huber) & 64 & 25 \\ \hline
+\end{tabular}}
+\begin{flushleft} Seeds 42, 43, 44 (set before model construction); class-weighted cross-entropy. \end{flushleft}
+\label{tab:config}
+\end{table}

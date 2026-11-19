@@ -1,0 +1,4 @@
+variant,n_recordings,evidence_dB_median_change,B1-V3-4s_dp_true_median,A4_dp_true_median,B3_dp_true_median,B1-V3-4s_pred_change_rate,A4_pred_change_rate,B3_pred_change_rate,A4_phys_logit_median_change,A4_latent_contrib_median_change,in_band_snr_db_median,clip_fraction_max,oob_rel_change_max
+T,10,-12.0647,-0.4294,-0.2143,0.0,0.4,0.3,0.05,-1.5175,0.0849,13.9338,0.117,0.006
+Cw,10,0.0656,0.0,0.0005,0.0,0.0,0.0,0.0,0.0053,-0.0008,32.3916,0.0177,0.0047
+Ce,10,0.5164,0.0,0.0047,0.0,0.05,0.0,0.05,0.0249,-0.0043,20.8855,0.0868,0.0044

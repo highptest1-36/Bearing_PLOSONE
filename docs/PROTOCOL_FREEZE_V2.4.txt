@@ -1,0 +1,4 @@
+RESEARCH_PROTOCOL_V2.4.md frozen (amends V2.3 6b4e4fdd7eb7d46e, unchanged)
+UTC time: 2026-11-18T20:34:26Z
+SHA-256: dd758b7f85c6f45f6698a9db5893db7b491f05e3eb03d57b558670f515f96635
+Inspected before freeze: label-free validity fractions + calibrated regions from a 1-epoch smoke run (O1); no class-wise statistics or metrics.

@@ -1,0 +1,14 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Datasets and their roles.}}
+{\footnotesize
+\begin{tabular}{|p{1.5cm}|p{1.9cm}|p{1.9cm}|p{1.2cm}|p{1.2cm}|p{2.6cm}|p{2.3cm}|}
+\hline
+Dataset & Role & Physical bearings & Type & Sampling; length & Operating conditions & Units analysed \\ \hline
+Paderborn PU-BD5 & Development (nested CV, FINAL training) & 15 (5 H, 5 IR, 5 OR) & 6203 & 64 kHz; 4 s & 4 settings: 900/1500 rpm, 0.1/0.7 Nm, 400/1000 N & 1200 records (4 s); 4781 windows (1 s) \\ \hline
+Ottawa UORED-VAFCLS & External, evaluated once & 20 (H state of all 20; IR 1 to 5; OR 6 to 10) & 6203 (NSK, FAFNIR) & 42 kHz; 10 s & one speed reading per file, 1700 to 2190 rpm; 400 N (ball faults 0 N) & 30 primary, 10 developing, 20 ball/cage (OOD) recordings \\ \hline
+KAIST & Audit only (not evaluated) & - & - & - & - & labels confounded with acquisition session \\ \hline
+\end{tabular}}
+\begin{flushleft} PU-BD5: healthy bearings K001 to K005 and bearings with real damage from accelerated lifetime tests (IR: KI04, KI14, KI16, KI18, KI21; OR: KA04, KA15, KA16, KA22, KA30). The physical bearing is the unit of analysis in both evaluated datasets. \end{flushleft}
+\label{tab:datasets}
+\end{table}

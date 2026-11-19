@@ -1,0 +1,22 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Bearing-level results on the 15 PU-BD5 bearings (nested outer test; three-seed ensembles).}}
+{\scriptsize
+\begin{tabular}{|p{2.60cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|>{\centering\arraybackslash}p{0.93cm}|}
+\hline
+Model & Input & Bearing macro-F1 & 95\% CI & Bal. acc. & Recall H, IR, OR & Fault sens. & Healthy FA & Window macro-F1 & NLL & ECE \\ \hline
+B0 physics rule & 4 s phys. & 0.655 & [0.40, 0.87] & 0.667 & 1.00, 0.60, 0.40 & 0.60 & 0.00 & 0.658 & - & - \\ \hline
+B1-V2 (P1, V2 concepts) & 1 s phys. & 0.739 & [0.49, 0.93] & 0.733 & 0.80, 0.80, 0.60 & 0.80 & 0.20 & 0.646 & 0.757 & 0.064 \\ \hline
+B1-V3, 1 s & 1 s phys. & 0.648 & [0.41, 0.87] & 0.667 & 0.60, 1.00, 0.40 & 0.90 & 0.40 & 0.362 & 1.063 & 0.032 \\ \hline
+B1-V3, 4 s & 4 s phys. & 0.780 & [0.56, 0.93] & 0.800 & 1.00, 1.00, 0.40 & 0.70 & 0.00 & 0.729 & 0.625 & 0.064 \\ \hline
+B2-V3 MLP, 1 s & 1 s phys. & 0.591 & [0.33, 0.80] & 0.600 & 0.60, 0.80, 0.40 & 0.80 & 0.40 & 0.354 & 1.069 & 0.034 \\ \hline
+B3 CNN-1D & 1 s raw & 0.611 & [0.37, 0.81] & 0.600 & 0.80, 0.40, 0.60 & 1.00 & 0.20 & 0.605 & 1.117 & 0.311 \\ \hline
+A1/B4 physics head & 4 s phys. & 0.780 & [0.56, 0.93] & 0.800 & 1.00, 1.00, 0.40 & 0.70 & 0.00 & 0.718 & 0.642 & 0.037 \\ \hline
+A2 + reliability features & 4 s phys. & 0.780 & [0.56, 0.93] & 0.800 & 1.00, 1.00, 0.40 & 0.70 & 0.00 & 0.682 & 0.704 & 0.075 \\ \hline
+A3 + latent, no gate & 4 s phys. + 1 s raw & 0.611 & [0.37, 0.81] & 0.600 & 0.80, 0.40, 0.60 & 1.00 & 0.20 & 0.605 & 1.025 & 0.280 \\ \hline
+A4 PAVE-Net (gated) & 4 s phys. + 1 s raw & 0.611 & [0.37, 0.81] & 0.600 & 0.80, 0.40, 0.60 & 1.00 & 0.20 & 0.619 & 0.946 & 0.199 \\ \hline
+A6 concept bottleneck & 1 s raw (4 s targets) & 0.733 & [0.52, 0.93] & 0.733 & 1.00, 0.60, 0.60 & 1.00 & 0.00 & 0.650 & 0.966 & 0.282 \\ \hline
+\end{tabular}}
+\begin{flushleft} Bearing = experimental unit (5 H, 5 IR, 5 OR). CI: class-stratified bootstrap over bearings. NLL and ECE are window-level after temperature scaling fitted on inner out-of-fold predictions. FA: false-alarm rate. Paired differences are given in S2 Table; none is statistically supported. Physics models use 4-s or 1-s concepts from the 64-kHz signal (1 to 20 kHz); CNN-based models use 1-s windows at 32 kHz. \end{flushleft}
+\label{tab:baselines}
+\end{table}

@@ -1,0 +1,13 @@
+bearing_fault_type,state_name,BPFO_harm,BPFI_harm,contrast,rpm_sample0
+BALL,developing,6.62,9.85,-2.51,1720.0
+BALL,faulty,4.7,9.18,-5.28,1722.0
+BALL,healthy,9.69,10.09,-1.56,1720.0
+CAGE,developing,4.9,7.54,-3.03,1780.0
+CAGE,faulty,4.72,9.4,-4.07,1767.0
+CAGE,healthy,6.02,11.4,-5.27,1780.0
+IR,developing,7.55,19.43,-11.87,1799.0
+IR,faulty,7.39,19.81,-11.52,1792.0
+IR,healthy,12.53,12.22,-3.32,1799.0
+OR,developing,35.37,11.44,19.58,1818.0
+OR,faulty,31.37,18.45,17.72,1818.0
+OR,healthy,5.03,11.26,-7.01,1818.0

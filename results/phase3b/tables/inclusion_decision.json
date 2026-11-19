@@ -1,0 +1,48 @@
+{
+ "inner_oof": {
+  "A2": {
+   "inner_oof_bearing_macro_f1": 0.6873684210526315,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 0.7735791802406311
+  },
+  "A4": {
+   "inner_oof_bearing_macro_f1": 0.5407407407407407,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 1.389445185661316
+  },
+  "A3": {
+   "inner_oof_bearing_macro_f1": 0.5423280423280423,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 2.351590394973755
+  },
+  "B4": {
+   "inner_oof_bearing_macro_f1": 0.7616598416598417,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 0.7092673778533936
+  },
+  "B1-V3-1s": {
+   "inner_oof_bearing_macro_f1": 0.600236646382691,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 1.1256143897769546
+  },
+  "B1-V3-4s": {
+   "inner_oof_bearing_macro_f1": 0.7042574489383,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 0.7915767615584287
+  },
+  "B3": {
+   "inner_oof_bearing_macro_f1": 0.5334012392835922,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 4.2336225509643555
+  },
+  "A6": {
+   "inner_oof_bearing_macro_f1": 0.5479462245602847,
+   "n_bearing_predictions": 60,
+   "inner_oof_window_nll": 2.5645811557769775
+  }
+ },
+ "rule": "keep latent iff A4 - A2 >= 0.05 bearing macro-F1 and NLL(A4) <= NLL(A2) on pooled inner OOF",
+ "keep_latent_branch": false,
+ "physics_only_final": "B1-V3-4s",
+ "final_recommended_model": "B1-V3-4s"
+}

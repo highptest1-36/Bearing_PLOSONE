@@ -1,0 +1,18 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Bearing-disjoint evaluation design.}}
+{\footnotesize
+\begin{tabular}{|l|p{2.8cm}|p{2.6cm}|p{2.3cm}|p{3.2cm}|}
+\hline
+Split & Test bearings & Training & Inner loop & Fitted on inner OOF / PU only \\ \hline
+O1 & K001, KA04, KI04 & 12 bearings of the other 4 rows & 4 inner folds (one row held out) & temperature, R4, inclusion rule \\ \hline
+O2 & K002, KA15, KI14 & 12 bearings of the other 4 rows & 4 inner folds (one row held out) & temperature, R4, inclusion rule \\ \hline
+O3 & K003, KA16, KI16 & 12 bearings of the other 4 rows & 4 inner folds (one row held out) & temperature, R4, inclusion rule \\ \hline
+O4 & K004, KA22, KI18 & 12 bearings of the other 4 rows & 4 inner folds (one row held out) & temperature, R4, inclusion rule \\ \hline
+O5 & K005, KA30, KI21 & 12 bearings of the other 4 rows & 4 inner folds (one row held out) & temperature, R4, inclusion rule \\ \hline
+FINAL & - & all 15 PU-BD5 bearings & - & PU-pooled outer-test predictions (temperature, R4, thresholds) \\ \hline
+External & 20 Ottawa bearings (30 primary recordings) & none (frozen FINAL models) & - & nothing from Ottawa \\ \hline
+\end{tabular}}
+\begin{flushleft} Governing protocols (SHA-256 prefixes): V2 60d0c66a, V2.1 15343677, V2.2 078d726b, V2.3 6b4e4fdd, V2.4 dd758b7f, EV-V1 bb297d52. Within an outer fold, no window, record or measurement of a test bearing is used for training, calibration or threshold selection. The architecture-inclusion decision used inner OOF predictions pooled over all outer folds, in which each bearing appears in the inner validation sets of the four folds where it is a training bearing (see Methods). \end{flushleft}
+\label{tab:splits}
+\end{table}

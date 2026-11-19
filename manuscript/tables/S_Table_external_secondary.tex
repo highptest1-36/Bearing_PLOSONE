@@ -1,0 +1,22 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Ottawa secondary analyses: developing faults (10 recordings) and out-of-scope ball and cage faults (10 + 10).}}
+{\footnotesize
+\begin{tabular}{|l|p{2.2cm}|p{2.2cm}|p{2.6cm}|p{2.6cm}|}
+\hline
+Model & Developing: detected & Developing: correct type & Ball/cage faulty: H/IR/OR & Ball/cage developing: H/IR/OR \\ \hline
+B0 physics rule & 0.80 & 0.80 & 10/0/0 & 10/0/0 \\ \hline
+B1-V2 (P1, V2 concepts) & 0.90 & 0.80 & 5/1/4 & 9/0/1 \\ \hline
+B1-V3, 1 s & 0.80 & 0.70 & 2/4/4 & 4/3/3 \\ \hline
+B1-V3, 4 s & 0.90 & 0.60 & 8/0/2 & 8/0/2 \\ \hline
+B2-V3 MLP, 1 s & 0.70 & 0.60 & 2/6/2 & 3/3/4 \\ \hline
+B3 CNN-1D & 1.00 & 1.00 & 0/2/8 & 0/2/8 \\ \hline
+A1/B4 physics head & 0.90 & 0.80 & 9/0/1 & 7/2/1 \\ \hline
+A2 + reliability features & 0.80 & 0.80 & 9/0/1 & 8/2/0 \\ \hline
+A3 + latent, no gate & 1.00 & 1.00 & 0/3/7 & 0/2/8 \\ \hline
+A4 PAVE-Net (gated) & 1.00 & 1.00 & 0/3/7 & 1/2/7 \\ \hline
+A6 concept bottleneck & 1.00 & 0.90 & 0/4/6 & 0/2/8 \\ \hline
+\end{tabular}}
+\begin{flushleft} Models that predict a fault for every Ottawa recording, including all healthy ones, trivially reach 1.0 developing-fault detection. \end{flushleft}
+\label{tab:extsec}
+\end{table}

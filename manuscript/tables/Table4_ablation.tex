@@ -1,0 +1,17 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Ablation study (PU-BD5).}}
+{\scriptsize
+\begin{tabular}{|p{2.60cm}|>{\centering\arraybackslash}p{1.51cm}|>{\centering\arraybackslash}p{1.51cm}|>{\centering\arraybackslash}p{1.51cm}|>{\centering\arraybackslash}p{1.51cm}|>{\centering\arraybackslash}p{1.51cm}|>{\centering\arraybackslash}p{1.51cm}|>{\centering\arraybackslash}p{1.51cm}|}
+\hline
+ID & Component & Outer macro-F1 & Weak-evidence correct & Strong-evidence correct & Outer NLL & Inner-OOF macro-F1 & Inner-OOF NLL \\ \hline
+A0 & physics rule & 0.655 & 1/6 & 4/4 & - & - & - \\ \hline
+A1 & physics concepts V3 (linear head) & 0.780 & 3/6 & 4/4 & 0.642 & 0.762 & 0.709 \\ \hline
+A2 & + evidence reliability & 0.780 & 3/6 & 4/4 & 0.704 & 0.687 & 0.774 \\ \hline
+A3 & + bounded latent (no gate) & 0.611 & 2/6 & 3/4 & 1.025 & 0.542 & 2.352 \\ \hline
+A4 & full gated fusion & 0.611 & 2/6 & 3/4 & 0.946 & 0.541 & 1.389 \\ \hline
+A6 & concept bottleneck (predicted concepts) & 0.733 & 3/6 & 3/4 & 0.966 & 0.548 & 2.565 \\ \hline
+\end{tabular}}
+\begin{flushleft} Weak-evidence bearings: KA15, KA22, KA30, KI14, KI16, KI21; strong: KA04, KA16, KI04, KI18. Inner-OOF values (60 bearing predictions pooled over the five outer folds; each bearing appears four times) were the only basis of the pre-specified inclusion rule; decision: keep latent branch = False, final recommended model = B1-V3-4s. A post hoc re-application of the rule within each outer fold selected the same model in all five folds (see Results). A5 (A4 + PE-SD) is reported in the selective-diagnosis table. \end{flushleft}
+\label{tab:ablation}
+\end{table}

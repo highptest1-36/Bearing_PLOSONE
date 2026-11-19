@@ -1,0 +1,1 @@
+{"fs_raw": 32000.0, "fs_env": 64000.0, "band": [1000.0, 20000.0], "order_spr": 1024, "order_nrev": 24, "n": 10181, "n_order": 8955, "channels": ["vibration_1"]}

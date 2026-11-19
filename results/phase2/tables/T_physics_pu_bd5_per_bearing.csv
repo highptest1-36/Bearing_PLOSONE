@@ -1,0 +1,16 @@
+bearing,label3,fold,contrast_med,contrast_q25,contrast_q75,family_max_med,nharm_O_med,nharm_I_med,sb_I_med,n,manufacturer,damage
+K001,H,BD5_f1,1.32,-0.26,3.51,5.51,1.0,1.0,2.27,320,IBU,run-in only | level 0 | -
+K002,H,BD5_f2,-0.25,-2.29,2.5,5.46,1.0,1.0,2.28,318,IBU,run-in only | level 0 | -
+K003,H,BD5_f3,1.16,-1.11,3.81,5.65,1.0,1.0,2.32,320,IBU,run-in only | level 0 | -
+K004,H,BD5_f4,0.78,-1.22,2.87,4.16,1.0,0.0,2.04,320,IBU,run-in only | level 0 | -
+K005,H,BD5_f5,1.44,-0.83,3.15,3.67,1.0,0.0,0.33,320,IBU,run-in only | level 0 | -
+KA04,OR,BD5_f1,20.31,18.1,22.3,21.24,3.0,0.0,0.74,319,FAG,accelerated lifetime; fatigue: pitting | level 1 | S
+KA15,OR,BD5_f2,0.18,-1.7,2.03,4.32,1.0,1.0,0.7,317,FAG,accelerated lifetime; plastic deform.: indentations | level 1 | S
+KA16,OR,BD5_f3,18.86,13.18,21.51,20.0,3.0,0.0,1.05,319,MTK,accelerated lifetime; fatigue: pitting | level 2 | R
+KA22,OR,BD5_f4,1.66,-0.42,3.55,4.49,1.0,1.0,1.42,315,IBU,accelerated lifetime; fatigue: pitting | level 1 | S
+KA30,OR,BD5_f5,1.97,-0.88,4.54,5.83,1.0,1.0,2.4,319,MTK,accelerated lifetime; plastic deform.: indentations | level 1 | R
+KI04,IR,BD5_f1,-10.17,-12.53,-6.88,14.22,1.0,3.0,11.59,320,MTK,accelerated lifetime; fatigue: pitting | level 1 | M
+KI14,IR,BD5_f2,-3.07,-4.99,-0.41,6.13,1.0,2.0,2.63,320,MTK,accelerated lifetime; fatigue: pitting | level 1 | M
+KI16,IR,BD5_f3,3.79,1.0,5.59,7.73,2.0,1.0,4.17,319,FAG,accelerated lifetime; fatigue: pitting | level 3 | S
+KI18,IR,BD5_f4,-14.51,-17.81,-8.95,18.22,1.0,3.0,21.09,317,MTK,accelerated lifetime; fatigue: pitting | level 2 | S
+KI21,IR,BD5_f5,-3.4,-5.41,-1.18,7.43,1.0,2.0,3.99,318,FAG,accelerated lifetime; fatigue: pitting | level 1 | S

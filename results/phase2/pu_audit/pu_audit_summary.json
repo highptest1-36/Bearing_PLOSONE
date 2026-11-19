@@ -1,0 +1,152 @@
+{
+  "n_bearings": 32,
+  "n_files": 2560,
+  "files_per_bearing_setting_unique": [
+    20
+  ],
+  "bearings_not_80_files": [],
+  "mat_sha_duplicates": 0,
+  "nan_inf_total": 0,
+  "n_vib_min_max": [
+    0,
+    299038
+  ],
+  "files_longer_than_4s_frac": 0.4421875,
+  "longest_constant_run_max": 6,
+  "speed_range_by_setting_rpm": {
+    "N09_M07_F10": [
+      898.6482977570504,
+      930.9298619067672
+    ],
+    "N15_M01_F10": [
+      1498.5904803281346,
+      1500.8128756196816
+    ],
+    "N15_M07_F04": [
+      1498.725685894495,
+      1501.396909331909
+    ],
+    "N15_M07_F10": [
+      1498.5573102875428,
+      1500.945796776511
+    ]
+  },
+  "manufacturers": {
+    "IBU": 15,
+    "MTK": 11,
+    "FAG": 6
+  },
+  "pitch_diameters_mm": [
+    28.55,
+    29.05
+  ],
+  "geometry_defaulted": [],
+  "BPFO_order_range": [
+    3.054290718038529,
+    3.0705679862306368
+  ],
+  "BPFI_order_range": [
+    4.929432013769363,
+    4.945709281961471
+  ],
+  "manufacturer_by_group": {
+    "FAG": {
+      "IR_artificial": 0,
+      "IR_real": 2,
+      "OR_artificial": 0,
+      "OR_real": 2,
+      "healthy": 0,
+      "multiple_real": 2
+    },
+    "IBU": {
+      "IR_artificial": 3,
+      "IR_real": 0,
+      "OR_artificial": 5,
+      "OR_real": 1,
+      "healthy": 6,
+      "multiple_real": 0
+    },
+    "MTK": {
+      "IR_artificial": 2,
+      "IR_real": 4,
+      "OR_artificial": 2,
+      "OR_real": 2,
+      "healthy": 0,
+      "multiple_real": 1
+    }
+  },
+  "n_distinct_dates": 25,
+  "dates_by_group": {
+    "IR_artificial": [
+      "2014-06-04",
+      "2015-03-26",
+      "2015-03-27",
+      "2015-09-18"
+    ],
+    "IR_real": [
+      "2014-06-12",
+      "2014-06-16",
+      "2014-06-17",
+      "2014-07-29",
+      "2015-07-09"
+    ],
+    "OR_artificial": [
+      "2014-06-05",
+      "2014-11-10",
+      "2014-11-14",
+      "2014-11-15",
+      "2014-12-23",
+      "2014-12-29"
+    ],
+    "OR_real": [
+      "2014-06-10",
+      "2014-07-29",
+      "2014-08-01",
+      "2015-03-27"
+    ],
+    "healthy": [
+      "2015-03-25",
+      "2015-09-17",
+      "2015-09-22",
+      "2015-10-07",
+      "2015-10-14",
+      "2015-10-16"
+    ],
+    "multiple_real": [
+      "2014-08-07",
+      "2015-03-25",
+      "2015-09-21"
+    ]
+  },
+  "bearings_sharing_date_with_other_group": 3,
+  "year_by_group": {
+    "2014": {
+      "IR_artificial": 1,
+      "IR_real": 5,
+      "OR_artificial": 7,
+      "OR_real": 4,
+      "healthy": 0,
+      "multiple_real": 1
+    },
+    "2015": {
+      "IR_artificial": 4,
+      "IR_real": 1,
+      "OR_artificial": 0,
+      "OR_real": 1,
+      "healthy": 6,
+      "multiple_real": 2
+    }
+  },
+  "rms_median_by_group": {
+    "IR_artificial": 0.2417,
+    "IR_real": 0.2766,
+    "OR_artificial": 0.2386,
+    "OR_real": 0.2576,
+    "healthy": 0.2819,
+    "multiple_real": 0.5191
+  },
+  "temp_range_C": [
+    25.010986311596117,
+    58.49609371134197
+  ]
+}

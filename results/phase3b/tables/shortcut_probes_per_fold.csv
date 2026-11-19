@@ -1,0 +1,101 @@
+fold,representation,target,n_bearings,n_positive,bearing_auroc
+O1,B3_embedding,manufacturer_IBU,20,10.0,0.95
+O1,B3_embedding,year_2015,20,9.0,0.7273
+O1,B3_embedding,origin_artificial(damaged only),15,12.0,0.6944
+O1,B3_embedding,setting_4class_window_acc,20,,0.4468
+O1,B3_embedding,speed_900rpm_window_auroc,20,,0.8598
+O1,A4_latent,manufacturer_IBU,20,10.0,0.89
+O1,A4_latent,year_2015,20,9.0,0.7172
+O1,A4_latent,origin_artificial(damaged only),15,12.0,0.75
+O1,A4_latent,setting_4class_window_acc,20,,0.4145
+O1,A4_latent,speed_900rpm_window_auroc,20,,0.8871
+O1,A6_predicted_concepts,manufacturer_IBU,20,10.0,0.95
+O1,A6_predicted_concepts,year_2015,20,9.0,0.6162
+O1,A6_predicted_concepts,origin_artificial(damaged only),15,12.0,0.75
+O1,A6_predicted_concepts,setting_4class_window_acc,20,,0.5627
+O1,A6_predicted_concepts,speed_900rpm_window_auroc,20,,0.9572
+O1,V3_concepts_4s,manufacturer_IBU,20,10.0,0.85
+O1,V3_concepts_4s,year_2015,20,9.0,0.8788
+O1,V3_concepts_4s,origin_artificial(damaged only),15,12.0,0.3889
+O1,V3_concepts_4s,setting_4class_window_acc,20,,0.3361
+O1,V3_concepts_4s,speed_900rpm_window_auroc,20,,0.7
+O2,B3_embedding,manufacturer_IBU,20,10.0,0.92
+O2,B3_embedding,year_2015,20,8.0,0.8125
+O2,B3_embedding,origin_artificial(damaged only),15,12.0,0.75
+O2,B3_embedding,setting_4class_window_acc,20,,0.4548
+O2,B3_embedding,speed_900rpm_window_auroc,20,,0.9045
+O2,A4_latent,manufacturer_IBU,20,10.0,0.86
+O2,A4_latent,year_2015,20,8.0,0.9167
+O2,A4_latent,origin_artificial(damaged only),15,12.0,0.7778
+O2,A4_latent,setting_4class_window_acc,20,,0.4282
+O2,A4_latent,speed_900rpm_window_auroc,20,,0.848
+O2,A6_predicted_concepts,manufacturer_IBU,20,10.0,0.93
+O2,A6_predicted_concepts,year_2015,20,8.0,0.7917
+O2,A6_predicted_concepts,origin_artificial(damaged only),15,12.0,0.2778
+O2,A6_predicted_concepts,setting_4class_window_acc,20,,0.3619
+O2,A6_predicted_concepts,speed_900rpm_window_auroc,20,,0.7172
+O2,V3_concepts_4s,manufacturer_IBU,20,10.0,0.58
+O2,V3_concepts_4s,year_2015,20,8.0,0.9271
+O2,V3_concepts_4s,origin_artificial(damaged only),15,12.0,0.6667
+O2,V3_concepts_4s,setting_4class_window_acc,20,,0.3035
+O2,V3_concepts_4s,speed_900rpm_window_auroc,20,,0.5721
+O3,B3_embedding,manufacturer_IBU,20,10.0,0.91
+O3,B3_embedding,year_2015,20,8.0,0.8854
+O3,B3_embedding,origin_artificial(damaged only),15,12.0,1.0
+O3,B3_embedding,setting_4class_window_acc,20,,0.5296
+O3,B3_embedding,speed_900rpm_window_auroc,20,,0.9627
+O3,A4_latent,manufacturer_IBU,20,10.0,0.82
+O3,A4_latent,year_2015,20,8.0,0.8125
+O3,A4_latent,origin_artificial(damaged only),15,12.0,0.9722
+O3,A4_latent,setting_4class_window_acc,20,,0.4798
+O3,A4_latent,speed_900rpm_window_auroc,20,,0.9438
+O3,A6_predicted_concepts,manufacturer_IBU,20,10.0,0.88
+O3,A6_predicted_concepts,year_2015,20,8.0,0.7708
+O3,A6_predicted_concepts,origin_artificial(damaged only),15,12.0,0.7778
+O3,A6_predicted_concepts,setting_4class_window_acc,20,,0.4838
+O3,A6_predicted_concepts,speed_900rpm_window_auroc,20,,0.8906
+O3,V3_concepts_4s,manufacturer_IBU,20,10.0,0.61
+O3,V3_concepts_4s,year_2015,20,8.0,0.9792
+O3,V3_concepts_4s,origin_artificial(damaged only),15,12.0,0.1111
+O3,V3_concepts_4s,setting_4class_window_acc,20,,0.3182
+O3,V3_concepts_4s,speed_900rpm_window_auroc,20,,0.628
+O4,B3_embedding,manufacturer_IBU,20,11.0,0.9697
+O4,B3_embedding,year_2015,20,8.0,0.8854
+O4,B3_embedding,origin_artificial(damaged only),15,12.0,0.6111
+O4,B3_embedding,setting_4class_window_acc,20,,0.5438
+O4,B3_embedding,speed_900rpm_window_auroc,20,,0.9286
+O4,A4_latent,manufacturer_IBU,20,11.0,0.9091
+O4,A4_latent,year_2015,20,8.0,0.9896
+O4,A4_latent,origin_artificial(damaged only),15,12.0,0.8889
+O4,A4_latent,setting_4class_window_acc,20,,0.4633
+O4,A4_latent,speed_900rpm_window_auroc,20,,0.8847
+O4,A6_predicted_concepts,manufacturer_IBU,20,11.0,0.9495
+O4,A6_predicted_concepts,year_2015,20,8.0,0.9896
+O4,A6_predicted_concepts,origin_artificial(damaged only),15,12.0,0.8611
+O4,A6_predicted_concepts,setting_4class_window_acc,20,,0.4488
+O4,A6_predicted_concepts,speed_900rpm_window_auroc,20,,0.781
+O4,V3_concepts_4s,manufacturer_IBU,20,11.0,0.7677
+O4,V3_concepts_4s,year_2015,20,8.0,0.8646
+O4,V3_concepts_4s,origin_artificial(damaged only),15,12.0,0.5556
+O4,V3_concepts_4s,setting_4class_window_acc,20,,0.2873
+O4,V3_concepts_4s,speed_900rpm_window_auroc,20,,0.6123
+O5,B3_embedding,manufacturer_IBU,20,10.0,0.94
+O5,B3_embedding,year_2015,20,9.0,0.798
+O5,B3_embedding,origin_artificial(damaged only),15,12.0,0.6944
+O5,B3_embedding,setting_4class_window_acc,20,,0.4911
+O5,B3_embedding,speed_900rpm_window_auroc,20,,0.9909
+O5,A4_latent,manufacturer_IBU,20,10.0,0.88
+O5,A4_latent,year_2015,20,9.0,0.7576
+O5,A4_latent,origin_artificial(damaged only),15,12.0,0.8056
+O5,A4_latent,setting_4class_window_acc,20,,0.4493
+O5,A4_latent,speed_900rpm_window_auroc,20,,0.9436
+O5,A6_predicted_concepts,manufacturer_IBU,20,10.0,0.95
+O5,A6_predicted_concepts,year_2015,20,9.0,0.6162
+O5,A6_predicted_concepts,origin_artificial(damaged only),15,12.0,0.2778
+O5,A6_predicted_concepts,setting_4class_window_acc,20,,0.4268
+O5,A6_predicted_concepts,speed_900rpm_window_auroc,20,,0.8554
+O5,V3_concepts_4s,manufacturer_IBU,20,10.0,0.72
+O5,V3_concepts_4s,year_2015,20,9.0,0.8384
+O5,V3_concepts_4s,origin_artificial(damaged only),15,12.0,0.5833
+O5,V3_concepts_4s,setting_4class_window_acc,20,,0.2764
+O5,V3_concepts_4s,speed_900rpm_window_auroc,20,,0.5796

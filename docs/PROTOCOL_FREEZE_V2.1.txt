@@ -1,0 +1,4 @@
+RESEARCH_PROTOCOL_V2.1.md frozen (amendment of V2; V2 unchanged: 60d0c66a539333947ec6245441b55fd89fe1ad76283af17994542ee3dee06d15)
+UTC time: 2026-11-18T17:32:14Z
+SHA-256: 15343677c65f1e9a5f4febf6dff84c43f0e6652b9b859fb8453bbf482f182027
+State at freeze: Phase 3A nested models (B0-B3), real-data interventions and confound probes NOT yet run. Seen before freeze: all Phase 2 results; Phase 3A PU metadata verification tables.

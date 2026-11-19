@@ -1,0 +1,26 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Computational cost.}}
+{\footnotesize
+\begin{tabular}{|p{3.20cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|>{\centering\arraybackslash}p{1.73cm}|}
+\hline
+Model & Device & Parameters & Latency median (ms) & Latency p95 (ms) & Training time (s) & Peak GPU (MB) \\ \hline
+B2 & cuda & 5443 & 0.18 & 0.26 & 0.6 & 18 \\ \hline
+B2 & cpu & 5443 & 0.06 & 0.06 & 0.6 & 18 \\ \hline
+B3 & cuda & 225539 & 1.01 & 1.17 & 34.7 & 246 \\ \hline
+B3 & cpu & 225539 & 1.64 & 1.99 & 34.7 & 246 \\ \hline
+B4 & cuda & 51 & 0.19 & 0.27 & 3.1 & 44 \\ \hline
+B4 & cpu & 51 & 0.05 & 0.08 & 3.1 & 44 \\ \hline
+A2 & cuda & 72 & 0.23 & 0.27 & 2.7 & 44 \\ \hline
+A2 & cpu & 72 & 0.06 & 0.06 & 2.7 & 44 \\ \hline
+A3 & cuda & 225590 & 1.28 & 1.48 & 35.5 & 247 \\ \hline
+A3 & cpu & 225590 & 1.91 & 2.26 & 35.5 & 247 \\ \hline
+A4 & cuda & 225598 & 1.59 & 2.80 & 36.1 & 247 \\ \hline
+A4 & cpu & 225598 & 1.74 & 2.08 & 36.1 & 247 \\ \hline
+A6 & cuda & 226211 & 1.15 & 1.50 & 35.3 & 247 \\ \hline
+A6 & cpu & 226211 & 1.70 & 2.10 & 35.3 & 247 \\ \hline
+V3 physics extraction (4-s, CPU) & cpu & 0 & 30.15 & 32.49 & - & - \\ \hline
+\end{tabular}}
+\begin{flushleft} Batch-1 inference on one 1-s window; training time per model per seed on 12 bearings (RTX 3060 Laptop GPU). \end{flushleft}
+\label{tab:efficiency}
+\end{table}

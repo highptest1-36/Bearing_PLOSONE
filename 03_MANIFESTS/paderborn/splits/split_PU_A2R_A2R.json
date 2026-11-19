@@ -1,0 +1,191 @@
+{
+  "protocol": "PU_A2R",
+  "fold_id": "A2R",
+  "assignments": [
+    {
+      "bearing": "K002",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "K003",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "K004",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "K005",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "KA01",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KA05",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KA07",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KA08",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KA09",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KI01",
+      "role": "train",
+      "label3": "IR",
+      "group": "IR_artificial"
+    },
+    {
+      "bearing": "KI05",
+      "role": "train",
+      "label3": "IR",
+      "group": "IR_artificial"
+    },
+    {
+      "bearing": "KI07",
+      "role": "train",
+      "label3": "IR",
+      "group": "IR_artificial"
+    },
+    {
+      "bearing": "K006",
+      "role": "val",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "KA03",
+      "role": "val",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KA06",
+      "role": "val",
+      "label3": "OR",
+      "group": "OR_artificial"
+    },
+    {
+      "bearing": "KI03",
+      "role": "val",
+      "label3": "IR",
+      "group": "IR_artificial"
+    },
+    {
+      "bearing": "KI08",
+      "role": "val",
+      "label3": "IR",
+      "group": "IR_artificial"
+    },
+    {
+      "bearing": "K001",
+      "role": "test",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "KA04",
+      "role": "test",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KA15",
+      "role": "test",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KA16",
+      "role": "test",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KA22",
+      "role": "test",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KA30",
+      "role": "test",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KI04",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI14",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI16",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI17",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI18",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI21",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    }
+  ],
+  "content_sha256": "8cb344fae281560979f0fd3b31294dabc45212d46414062240a256ac066c8ff7",
+  "challenge_descriptive_only": [
+    "KB23",
+    "KB24",
+    "KB27"
+  ],
+  "notes": [
+    "All 4 operating settings and all measurements of a bearing share one role.",
+    "Bearing-disjoint: no bearing appears in two roles.",
+    "Source of PU_BD5 rows: Lessmeier et al. 2016, Table 10."
+  ]
+}

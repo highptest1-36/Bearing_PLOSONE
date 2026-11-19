@@ -1,0 +1,4 @@
+RESEARCH_PROTOCOL_V2.3.md frozen (amends V2.2 078d726b13e910a2, unchanged)
+UTC time: 2026-11-18T20:26:37Z
+SHA-256: 6b4e4fdd7eb7d46e71a0332c01344be45e38b01c91daa9cbdb93861c9d537a27
+Inspected before freeze: V3 synthetic tests + analytic identifiability table (geometry/nominal speed only); no Phase 3B real-data results.

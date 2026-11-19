@@ -1,0 +1,203 @@
+{
+  "S-4b_within_stratum": {
+    "IBU: K001-K005 vs KA22": {
+      "healthy_median_fammax_dB": {
+        "K001": 5.51,
+        "K002": 6.19,
+        "K003": 5.65,
+        "K004": 4.18,
+        "K005": 3.65
+      },
+      "faulty_median_fammax_dB": {
+        "KA22": 4.49
+      },
+      "bearing_level_auroc": 0.4,
+      "window_level_auroc": 0.41382084748793135
+    },
+    "2015: K001-K005 vs KA30, KI04": {
+      "healthy_median_fammax_dB": {
+        "K001": 5.51,
+        "K002": 6.19,
+        "K003": 5.65,
+        "K004": 4.18,
+        "K005": 3.65
+      },
+      "faulty_median_fammax_dB": {
+        "KA30": 6.34,
+        "KI04": 14.21
+      },
+      "bearing_level_auroc": 1.0,
+      "window_level_auroc": 0.8281204400649481
+    }
+  },
+  "S-4c_session_identity_probe": {
+    "year_2014_vs_2015_within_IR_bearings": {
+      "n_bearings": 11,
+      "n_positive_bearings": 5,
+      "positive_bearings": [
+        "KI01",
+        "KI04",
+        "KI05",
+        "KI07",
+        "KI08"
+      ],
+      "artificial_share_pos": 0.8,
+      "artificial_share_neg": 0.16666666666666666,
+      "handcrafted_RF": {
+        "bearing_level_auroc": 1.0,
+        "bearing_scores": {
+          "KI01": 1.0,
+          "KI03": 0.0,
+          "KI04": 1.0,
+          "KI05": 1.0,
+          "KI07": 1.0,
+          "KI08": 1.0,
+          "KI14": 0.0,
+          "KI16": 0.0,
+          "KI17": 0.0,
+          "KI18": 0.0,
+          "KI21": 0.0
+        }
+      },
+      "concepts_LR": {
+        "bearing_level_auroc": 0.4333333333333333,
+        "bearing_scores": {
+          "KI01": 0.495,
+          "KI03": 0.343,
+          "KI04": 0.259,
+          "KI05": 0.54,
+          "KI07": 0.471,
+          "KI08": 0.367,
+          "KI14": 0.38,
+          "KI16": 0.598,
+          "KI17": 0.389,
+          "KI18": 0.891,
+          "KI21": 0.448
+        }
+      }
+    },
+    "IBU_vs_nonIBU_within_damaged_bearings": {
+      "n_bearings": 23,
+      "n_positive_bearings": 9,
+      "positive_bearings": [
+        "KA05",
+        "KA06",
+        "KA07",
+        "KA08",
+        "KA09",
+        "KA22",
+        "KI05",
+        "KI07",
+        "KI08"
+      ],
+      "artificial_share_pos": 0.8888888888888888,
+      "artificial_share_neg": 0.2857142857142857,
+      "handcrafted_RF": {
+        "bearing_level_auroc": 0.865079365079365,
+        "bearing_scores": {
+          "KA01": 0.05,
+          "KA03": 0.077,
+          "KA04": 0.005,
+          "KA05": 0.961,
+          "KA06": 0.802,
+          "KA07": 0.923,
+          "KA08": 0.991,
+          "KA09": 0.99,
+          "KA15": 0.067,
+          "KA16": 0.01,
+          "KA22": 0.0,
+          "KA30": 0.577,
+          "KI01": 0.428,
+          "KI03": 0.068,
+          "KI04": 0.37,
+          "KI05": 0.771,
+          "KI07": 0.913,
+          "KI08": 0.299,
+          "KI14": 0.014,
+          "KI16": 0.043,
+          "KI17": 0.039,
+          "KI18": 0.005,
+          "KI21": 0.018
+        }
+      },
+      "concepts_LR": {
+        "bearing_level_auroc": 0.865079365079365,
+        "bearing_scores": {
+          "KA01": 0.21,
+          "KA03": 0.445,
+          "KA04": 0.266,
+          "KA05": 0.573,
+          "KA06": 0.557,
+          "KA07": 0.595,
+          "KA08": 0.551,
+          "KA09": 0.647,
+          "KA15": 0.498,
+          "KA16": 0.582,
+          "KA22": 0.34,
+          "KA30": 0.536,
+          "KI01": 0.06,
+          "KI03": 0.317,
+          "KI04": 0.079,
+          "KI05": 0.641,
+          "KI07": 0.484,
+          "KI08": 0.407,
+          "KI14": 0.322,
+          "KI16": 0.434,
+          "KI17": 0.361,
+          "KI18": 0.064,
+          "KI21": 0.227
+        }
+      }
+    },
+    "EXPLORATORY_IBU_vs_MTK_within_artificial": {
+      "n_bearings": 12,
+      "n_positive_bearings": 8,
+      "positive_bearings": [
+        "KA05",
+        "KA06",
+        "KA07",
+        "KA08",
+        "KA09",
+        "KI05",
+        "KI07",
+        "KI08"
+      ],
+      "artificial_share_pos": 1.0,
+      "artificial_share_neg": 1.0,
+      "handcrafted_RF": {
+        "bearing_level_auroc": 0.9375,
+        "bearing_scores": {
+          "KA01": 0.821,
+          "KA03": 0.014,
+          "KA05": 1.0,
+          "KA06": 0.948,
+          "KA07": 0.981,
+          "KA08": 1.0,
+          "KA09": 1.0,
+          "KI01": 0.959,
+          "KI03": 0.028,
+          "KI05": 1.0,
+          "KI07": 0.993,
+          "KI08": 0.884
+        }
+      },
+      "concepts_LR": {
+        "bearing_level_auroc": 0.4375,
+        "bearing_scores": {
+          "KA01": 0.979,
+          "KA03": 0.859,
+          "KA05": 0.824,
+          "KA06": 0.815,
+          "KA07": 0.829,
+          "KA08": 0.801,
+          "KA09": 0.878,
+          "KI01": 0.732,
+          "KI03": 0.814,
+          "KI05": 0.86,
+          "KI07": 0.759,
+          "KI08": 0.658
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Phase 1 audit dependencies (pinned to the versions used on 2026-11-18)
+numpy==1.26.4
+scipy==1.15.3
+pandas==2.3.0
+matplotlib==3.10.9
+npTDMS==1.10.0
+pytest==8.4.1
+# Phase 2
+scikit-learn==1.4.1.post1
+pypdf==6.9.2
+torch==2.7.1  # CUDA 12.6 build used

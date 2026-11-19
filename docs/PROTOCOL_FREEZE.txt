@@ -1,0 +1,4 @@
+RESEARCH_PROTOCOL_V2.md frozen
+UTC time: 2026-11-18T16:41:11Z
+SHA-256: 60d0c66a539333947ec6245441b55fd89fe1ad76283af17994542ee3dee06d15
+State at freeze: no Paderborn vibration spectra/features/statistics computed; only metadata of one file (K001 N15_M07_F10 #1) and K001 fact sheet/log read.

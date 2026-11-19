@@ -1,0 +1,107 @@
+{
+  "protocol": "PU_BD5",
+  "fold_id": "BD5_f1",
+  "assignments": [
+    {
+      "bearing": "K003",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "K004",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "K005",
+      "role": "train",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "KA16",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KA22",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KA30",
+      "role": "train",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KI16",
+      "role": "train",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI18",
+      "role": "train",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "KI21",
+      "role": "train",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "K002",
+      "role": "val",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "KA15",
+      "role": "val",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KI14",
+      "role": "val",
+      "label3": "IR",
+      "group": "IR_real"
+    },
+    {
+      "bearing": "K001",
+      "role": "test",
+      "label3": "H",
+      "group": "healthy"
+    },
+    {
+      "bearing": "KA04",
+      "role": "test",
+      "label3": "OR",
+      "group": "OR_real"
+    },
+    {
+      "bearing": "KI04",
+      "role": "test",
+      "label3": "IR",
+      "group": "IR_real"
+    }
+  ],
+  "content_sha256": "31a6f285a4f0d7998fbe552c30759ba412ec23dca36a5b228787cf143efcdcbb",
+  "challenge_descriptive_only": [
+    "KB23",
+    "KB24",
+    "KB27"
+  ],
+  "notes": [
+    "All 4 operating settings and all measurements of a bearing share one role.",
+    "Bearing-disjoint: no bearing appears in two roles.",
+    "Source of PU_BD5 rows: Lessmeier et al. 2016, Table 10."
+  ]
+}

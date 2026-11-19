@@ -1,0 +1,18 @@
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Related-work matrix.}}
+{\scriptsize
+\begin{tabular}{|p{1.9cm}|p{1.9cm}|p{0.9cm}|p{1.9cm}|p{1.7cm}|p{1.5cm}|p{1.9cm}|p{1.1cm}|}
+\hline
+Study & Physics integration & Learned model & Bearing-disjoint evaluation & External dataset & Speed uncertainty & Explanation faithfulness & Selective diagnosis \\ \hline
+Smith \& Randall 2015 \cite{smith2015rolling} & envelope and spectral benchmark analysis & no & - (CWRU, per-record) & no & no & no & no \\ \hline
+Hendriks et al. 2022 \cite{hendriks2022towards} & - & yes & random vs. bearing-aware splits (CWRU) & no & no & no & no \\ \hline
+Wheat et al. 2024 \cite{wheat2024impact} & frequency and envelope features & yes & part-to-part (CMHT, Paderborn KAt) & no & no & no & no \\ \hline
+Vieira et al. 2026 \cite{vieira2026towards} & - & yes & bearing-wise (CWRU, PU, UORED, HUST) & within-dataset & no & no & no \\ \hline
+Siddique et al. 2026 \cite{siddique2026physics} & kinematic orders, null orders, conformal alarm & no & 3 frozen PU folds & UORED, frozen, nominal speed & fixed order tolerance & decision-level (no faithfulness test) & no \\ \hline
+Koh et al. 2020 \cite{koh2020concept} & concept bottleneck (generic ML) & yes & - & - & - & concept interventions & no \\ \hline
+This study & 8 identifiability-masked envelope concepts & yes & nested, 5 outer $\times$ 4 inner (PU-BD5) & Ottawa, frozen, single evaluation & $\sigma_r$ in regions and guards; sensitivity analysis & targeted vs. width- and energy-matched suppression & PE-SD (R1 to R4) \\ \hline
+\end{tabular}}
+\begin{flushleft} Entries summarise only what the cited articles report (checked against full texts or publisher records). '-': not applicable or not reported. \end{flushleft}
+\label{tab:related}
+\end{table}

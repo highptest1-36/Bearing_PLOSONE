@@ -1,0 +1,15 @@
+{
+ "status": "POST HOC EXPLORATORY - not pre-specified; does not replace the frozen decision",
+ "frozen_global_choice": "B1-V3-4s",
+ "fold_local_choices": {
+  "O1": "B1-V3-4s",
+  "O2": "B1-V3-4s",
+  "O3": "B1-V3-4s",
+  "O4": "B1-V3-4s",
+  "O5": "B1-V3-4s"
+ },
+ "all_folds_agree_with_global": true,
+ "outer_macro_f1_global_choice": 0.7802197802197801,
+ "outer_macro_f1_fold_local_procedure": 0.7802197802197801,
+ "n_bearings": 15
+}

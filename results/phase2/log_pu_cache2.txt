@@ -1,0 +1,22 @@
+[23:51:17] KA08: UNREADABLE KA08/N15_M01_F10_KA08_2.mat: TypeError('Expecting matrix here')
+[23:51:20] KA08: 80 files in 10s
+[23:51:31] KA09: 80 files in 12s
+[23:51:41] KA15: 80 files in 10s
+[23:51:55] KA16: 80 files in 13s
+[23:52:05] KA22: 80 files in 10s
+[23:52:13] KA30: 80 files in 8s
+[23:52:21] KB23: 80 files in 8s
+[23:52:29] KB24: 80 files in 8s
+[23:52:36] KB27: 80 files in 7s
+[23:52:43] KI01: 80 files in 7s
+[23:52:50] KI03: 80 files in 7s
+[23:52:58] KI04: 80 files in 8s
+[23:53:05] KI05: 80 files in 7s
+[23:53:13] KI07: 80 files in 8s
+[23:53:21] KI08: 80 files in 8s
+[23:53:28] KI14: 80 files in 7s
+[23:53:36] KI16: 80 files in 8s
+[23:53:43] KI17: 80 files in 7s
+[23:53:51] KI18: 80 files in 7s
+[23:53:58] KI21: 80 files in 7s
+[23:53:58] manifest: 32 bearings, 2560 files

@@ -1,0 +1,559 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{changepage}
+\usepackage{textcomp,marvosym}
+\usepackage{cite}
+\usepackage{nameref,hyperref}
+\usepackage[right]{lineno}
+\usepackage[nopatch=eqnum]{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+\usepackage[table]{xcolor}
+\usepackage{array}
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in
+\textheight 8.75in
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+\bibliographystyle{plos2025}
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\today}
+
+\begin{document}
+\vspace*{0.2in}
+
+\begin{flushleft}
+{\Large
+\textbf{Physically grounded vibration evidence for verifiable bearing fault diagnosis on unseen bearings}
+}
+\newline
+\\
+Cao-Phuc Ha\textsuperscript{1},
+Phu-Nguyen Le\textsuperscript{2*}
+\\
+\bigskip
+\textbf{1} Department of Artificial Intelligence, FPT University, Ho Chi Minh City, Vietnam
+\\
+\textbf{2} Faculty of Electrical and Electronics Engineering, Vietnam Aerospace University, Ho Chi Minh City, Vietnam
+\\
+\bigskip
+* nguyenlp@vaa.edu.vn
+\end{flushleft}
+
+\section*{Abstract}
+Data-driven bearing diagnosis often reports high accuracy that does not hold on bearings unseen in training, and physics-based explanations are rarely tested. This study examined whether envelope-spectrum evidence supports verifiable diagnosis of healthy, inner-race and outer-race states when the physical bearing is the unit of analysis. Fifteen Paderborn bearings were evaluated by nested bearing-disjoint cross-validation under internally hash-frozen protocols. For the 6203 geometry, fault frequencies were separable from shaft harmonics in 4-s records but not in 1-s windows. A logistic model on identifiability-masked concepts gave the highest bearing-level macro-F1 (0.78, 95\% CI 0.56 to 0.93), although no pairwise difference was statistically supported. Suppressing the named fault-frequency bands, relative to matched controls, lowered its true-class probability by 0.41 in all ten faulty bearings, whereas a convolutional network showed no measurable change. In a single evaluation on 20 Ottawa bearings, macro-F1 decreased to 0.52 with frequent false alarms. The physics evidence made the model's dependence testable but did not by itself make the diagnosis transferable.
+
+\clearpage
+\newgeometry{top=0.85in,left=1in,right=1in,footskip=0.75in}
+\linenumbers
+
+\section*{Introduction}
+Rolling-element bearings are a frequent cause of failure in rotating machinery, and vibration monitoring is the established way to detect and locate their defects~\cite{randall2011rolling,lei2020applications}. A local defect on a raceway produces a series of impacts whose repetition rate follows the bearing kinematics. This rate is described by the ball-pass frequencies of the outer and inner race (BPFO and BPFI), and inner-race defects are further modulated at the shaft frequency. Envelope analysis of a resonance band excited by the impacts is the classical way to reveal these frequencies~\cite{randall2011rolling,ho2000optimisation}. Spectral kurtosis is widely used to select the band~\cite{antoni2006spectral,antoni2007fast}, and order tracking makes the fault orders independent of speed~\cite{fyfe1997analysis}.
+
+Over the last decade, deep networks and other data-driven classifiers have reported near-perfect accuracy on public bearing benchmarks~\cite{zhang2020deep,lei2020applications}. Several studies have since shown that much of this accuracy depends on how the data are split. When segments of one physical bearing appear in both the training and the test set, accuracy is inflated, and it decreases under bearing-disjoint evaluation~\cite{hendriks2022towards,wheat2024impact,vieira2026towards}. The same concern applies to machine-learning-based science more broadly~\cite{kapoor2023leakage}, because classifiers can exploit shortcuts, that is, nuisance regularities that happen to co-vary with the label~\cite{geirhos2020shortcut}. In bearing data, such regularities include the acquisition session, the manufacturer, the installation and the operating point.
+
+Physics-informed machine learning~\cite{karniadakis2021physics} and interpretable models~\cite{rudin2019stop} are often proposed as remedies, because they tie a decision to physically meaningful quantities. Concept bottleneck models route a prediction through human-defined concepts~\cite{koh2020concept}. An explanation that names a physical quantity is, however, not necessarily faithful to the model~\cite{jacovi2020towards}. Saliency maps can be insensitive to the model and the data~\cite{adebayo2018sanity}, and the dependence of a model on an input feature is best tested by controlled interventions with matched controls~\cite{hooker2019benchmark}. A diagnosis is also useful only when its reliability is known. Calibration~\cite{guo2017calibration} and selective classification~\cite{geifman2017selective} address this need, but on an unseen bearing the confidence of a learned model need not reflect the physical evidence that is present.
+
+The study closest to the present work proposed a physics-guided statistical rule that screens fault orders for spectral resolution, compares envelope evidence at the fault orders with matched null orders and calibrates an alarm on healthy reference data~\cite{siddique2026physics}. It used bearing-disjoint folds on the Paderborn dataset~\cite{lessmeier2016condition} and an external test on the University of Ottawa dataset~\cite{sehri2023university}, which the authors describe as pre-registered. The rule gave low healthy false-alarm rates but low external detection, and part of the shortfall was attributed to a difference between the nominal and the actual shaft speed. Learned models were not compared on the same splits, and the faithfulness of explanations was not tested.
+
+The present study asks whether physically meaningful vibration evidence can support reliable and verifiable diagnosis of healthy, inner-race and outer-race states on bearings that were not seen in training. The physical bearing is treated as the experimental unit throughout. Each analysis was specified in a versioned internal protocol whose SHA-256 hash was recorded before the analysis was run. These protocols were not deposited in a public registry and are provided as supporting information. Five research questions are addressed. The first asks whether physics-derived concepts give more stable bearing-level evidence than unrestricted learned features. The second asks whether a fusion of physics concepts and a learned encoder, weighted by evidence reliability, improves diagnosis when fault signatures are weak. The third asks whether controlled spectral interventions can verify that a model depends on the evidence named in its explanation. The fourth asks whether selective diagnosis that uses physics evidence lowers the error of accepted diagnoses at matched coverage. The fifth asks whether the findings transfer to an independent dataset without adaptation to its labels.
+
+The contributions are methodological and empirical rather than architectural. The study defines envelope concepts that account for spectral resolution and speed uncertainty, with explicit identifiability checks and validity masks, and shows that for the common 6203 geometry 1-s windows cannot separate the fault families from nearby shaft harmonics, whereas 4-s records can. It compares physics-only models, a physics-anchored fusion model with a bounded and gated latent branch (PAVE-Net), a concept bottleneck comparator and an unconstrained convolutional neural network (CNN) on the same bearing-disjoint nested splits. It tests the dependence of each model on fault-frequency evidence with targeted envelope-domain interventions and matched controls, evaluates selective diagnosis at matched bearing coverage, and reports a single external evaluation on the Ottawa dataset that was specified in a protocol frozen before any Ottawa signal was analysed. The model finally recommended is a physics-only logistic model, and PAVE-Net is reported as a comparator that did not improve diagnosis. The aim was largely met for verifiability, because the dependence of the physics models on their stated evidence could be tested. It was not met for transfer, because the physics models raised many false alarms on the external dataset. No novelty is claimed for concept bottlenecks, envelope analysis, selective prediction or the optimizer, and AdamW~\cite{loshchilov2019decoupled} was used throughout.
+
+The remainder of this paper is organized as follows. The Related work section summarizes previous studies on data-driven and physics-informed bearing diagnosis, explanation faithfulness and selective classification. The Materials and methods section describes the datasets, the evaluation design, the physics concepts, the models and the verification procedures. The Results section reports the identifiability analysis, the internal comparison of the models, the intervention tests, the selective diagnosis and the single external evaluation. The Discussion section interprets these results with respect to the research questions and prior work, and the Conclusions section summarizes the findings, the limitations and directions for future work.
+
+\section*{Related work}
+Reviews document a large body of machine-learning and deep-learning methods for bearing diagnosis~\cite{zhang2020deep,lei2020applications}. Benchmark studies on the Case Western Reserve University data showed that many labelled faults are not diagnosable by established signal processing~\cite{smith2015rolling} and that random segment splits inflate accuracy~\cite{hendriks2022towards}. Part-to-part evaluation on the Paderborn and other datasets reduces accuracy considerably, and the number of distinct training bearings appears to be the main determinant of generalization~\cite{wheat2024impact,vieira2026towards}. Studies of domain generalization also indicate that carefully tuned empirical risk minimization is a strong baseline~\cite{gulrajani2021search}.
+
+Physics knowledge enters bearing diagnosis through kinematic fault frequencies, envelope and order-domain processing and resonance-band selection~\cite{randall2011rolling,antoni2007fast,fyfe1997analysis}. Physics-guided statistical rules give transparent decisions but depend on accurate speed and geometry~\cite{siddique2026physics}. Concept bottleneck models predict human-defined concepts and classify from them~\cite{koh2020concept}. In bearing diagnosis the concepts can also be measured directly, which raises the question of whether learning to predict them adds information. Faithfulness, meaning that an explanation reflects the reasoning of the model, differs from plausibility to a human reader~\cite{jacovi2020towards}. Removal or perturbation tests with matched controls are therefore needed, since saliency methods can fail basic sanity checks~\cite{adebayo2018sanity,hooker2019benchmark}. Selective classification trades coverage for risk~\cite{geifman2017selective}, and its benefit depends on whether the confidence score ranks errors correctly, which in turn depends on calibration~\cite{guo2017calibration}. S1 Table compares the present study with the closest prior work along these dimensions.
+
+\section*{Materials and methods}
+
+\subsection*{Study design and protocol control}
+The study had four phases, namely data audit, baselines, development and external validation. Each phase followed a versioned internal protocol whose SHA-256 hash and UTC timestamp were recorded before the corresponding experiments (S1 and S2 Files). Amendments were made only by issuing a new version with the reason, a timestamp and the list of results already inspected, and earlier versions were kept unchanged. Because the protocols were not deposited in a public registry, their timing is documented by these records rather than verified by a third party.
+
+The 15 development bearings were used in two phases. In the baseline phase (protocol V2.1), physics rules, logistic models on the earlier V2 concepts and the CNN were evaluated on the same outer folds. Their bearing-level results were inspected before protocol V2.2 specified the V3 concepts, the fusion models, the fixed configurations and the architecture-inclusion rule. Amendments V2.3 and V2.4 followed an analytic identifiability table and a label-free check of concept validity, and both preceded every classification result of the development phase. The internal results are therefore development estimates, and only the Ottawa evaluation used data that had not informed any design decision. The physical bearing is the independent unit, and windows or measurements from one bearing are treated as correlated observations.
+
+\subsection*{Datasets}
+The Paderborn University (PU) bearing dataset~\cite{lessmeier2016condition,paderborn2016KAtData} contains 32 deep-groove ball bearings of type 6203. Each bearing was measured under four operating settings, which combine a speed of 900 or 1500 rpm, a load torque of 0.1 or 0.7 Nm and a radial force of 400 or 1000 N, with 20 measurements of about 4 s per setting sampled at 64 kHz. The development set (PU-BD5) consists of the 15 bearings that the dataset paper groups into five rows of one healthy, one inner-race (IR) and one outer-race (OR) bearing. Five of these bearings are healthy, and ten carry real damage produced in accelerated lifetime tests rather than machined damage (Table~\ref{tab:datasets}). The bearing geometry was taken from the fact sheet of each bearing archive, with a pitch diameter of 28.55 mm for the FAG bearings and 29.05 mm for the IBU and MTK bearings. One corrupted file was excluded. The 12 artificially damaged bearings and the bearings K006 and KI17 were used only for concept and shortcut analyses, and the three bearings with combined IR and OR damage were excluded.
+
+The University of Ottawa dataset UORED-VAFCLS, version 5~\cite{sehri2023university,sehri2023uoredData}, contains 20 bearings of type 6203 (pitch diameter 28.50 mm, ball diameter 6.77 mm, eight balls). Each bearing was recorded in a healthy state and later in developing-fault and faulty states during run-to-failure tests at a nominal speed of 1750 rpm and a radial load of 400 N, with no load for the ball-fault bearings. Bearings 1 to 5 developed inner-race faults, bearings 6 to 10 outer-race faults, bearings 11 to 15 ball faults and bearings 16 to 20 cage faults. Each recording lasts 10 s at 42 kHz and includes an accelerometer signal and a Hall-sensor speed channel. Because the 60 recordings come from 20 bearings, recordings of one bearing are paired observations. The dataset was used once, for external evaluation, under a separately frozen protocol (S2 File). A third dataset from KAIST~\cite{jung2023vibration,jung2023kaistData} was audited at the start of the project. Its labels were fully confounded with the acquisition session and the installation, so it was used only to motivate the protocol. Table~\ref{tab:datasets} summarizes the roles of the three datasets.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Datasets and their roles.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llll}
+\hline
+ & PU-BD5 & Ottawa UORED-VAFCLS & KAIST \\
+\hline
+Role & Development & External, evaluated once & Audit only \\
+Physical bearings & 15 (5 H, 5 IR, 5 OR) & 20 (IR 1 to 5, OR 6 to 10) & - \\
+Bearing type & 6203 & 6203 (NSK, FAFNIR) & - \\
+Sampling rate & 64 kHz & 42 kHz & - \\
+Record length & 4 s & 10 s & - \\
+Speed & 900 or 1500 rpm & 1700 to 2190 rpm & - \\
+Load & 0.1 or 0.7 Nm, 400 or 1000 N & 400 N (ball faults 0 N) & - \\
+Units analysed & 1200 records, 4781 windows & 30 primary recordings & - \\
+Secondary units & - & 10 developing, 20 ball or cage & - \\
+\hline
+\end{tabular}}
+\begin{flushleft} H, healthy; IR, inner race; OR, outer race. PU-BD5 comprises the healthy bearings K001 to K005 and bearings with damage from accelerated lifetime tests (IR: KI04, KI14, KI16, KI18, KI21; OR: KA04, KA15, KA16, KA22, KA30); its records last 4 s and its windows 1 s. The Ottawa primary set contains the healthy recordings of all 20 bearings, and the speed is a single reading per file. The KAIST labels were confounded with the acquisition session, so this dataset was not evaluated. \end{flushleft}
+\label{tab:datasets}
+\end{table}
+
+\subsection*{Bearing-disjoint nested evaluation}
+Five outer folds were used on PU-BD5 (Fig~\ref{fig1}). In each outer fold, the three bearings of one row formed the test set and the 12 bearings of the other rows formed the training set. Within each outer training set, four inner folds held out one row at a time. The inner out-of-fold (OOF) probabilities were used only for temperature scaling, for fitting the selective-diagnosis score and for the architecture-inclusion rule. Hyperparameters were fixed in protocol V2.2 rather than tuned, because nested selection with 12 training bearings had been unstable in the baseline phase. Every bearing is tested exactly once, and all data-dependent operations were fitted on the training bearings of the respective level only (Table~\ref{tab:splits}).
+
+\begin{figure}[!h]
+\caption{\textbf{Evaluation design.} Development on the 15 PU-BD5 bearings with five bearing-disjoint outer folds and four inner folds, followed by a single evaluation of the frozen final models on 20 Ottawa bearings.}
+\label{fig1}
+\end{figure}
+
+The outer-test result of each model estimates the performance of that model as a fixed procedure. The architecture-inclusion decision was taken differently, namely once for all folds on inner OOF predictions pooled over the five outer folds. Each bearing therefore entered this decision through the inner folds of the four outer folds in which it was a training bearing. The outer-test estimate of the selected model is consequently not strictly independent of the selection, and the rule was therefore also re-applied within each outer fold as a post hoc sensitivity analysis.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Bearing-disjoint evaluation design.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llll}
+\hline
+Split & Test bearings & Training bearings & Fitted on \\
+\hline
+O1 & K001, KA04, KI04 & 12 bearings of the other rows & temperature, R4, inclusion rule \\
+O2 & K002, KA15, KI14 & 12 bearings of the other rows & temperature, R4, inclusion rule \\
+O3 & K003, KA16, KI16 & 12 bearings of the other rows & temperature, R4, inclusion rule \\
+O4 & K004, KA22, KI18 & 12 bearings of the other rows & temperature, R4, inclusion rule \\
+O5 & K005, KA30, KI21 & 12 bearings of the other rows & temperature, R4, inclusion rule \\
+FINAL & - & all 15 PU-BD5 bearings & temperature, R4, thresholds \\
+External & 20 Ottawa bearings & none (frozen FINAL models) & nothing from Ottawa \\
+\hline
+\end{tabular}}
+\begin{flushleft} In the outer folds, the temperature, the R4 score and the inclusion rule are fitted on inner OOF predictions from four inner folds that hold out one row at a time; the FINAL models use values fitted on the pooled PU outer-test predictions. Within an outer fold, no data of a test bearing is used for training, calibration or threshold selection. The inclusion decision used inner OOF predictions pooled over all outer folds. Protocol hashes (SHA-256 prefixes): V2 60d0c66a, V2.1 15343677, V2.2 078d726b, V2.3 6b4e4fdd, V2.4 dd758b7f, EV-V1 bb297d52. \end{flushleft}
+\label{tab:splits}
+\end{table}
+
+\subsection*{Physics concepts}
+The envelope spectrum of each record was computed from the Hilbert envelope of the signal after band-pass filtering between 1 and 20 kHz~\cite{randall2011rolling,ho2000optimisation}. The kinematic orders of BPFO and BPFI follow from the number of balls, the ball and pitch diameters and the contact angle~\cite{randall2011rolling}. Because slip and changes of the contact angle shift the observed lines, each fault family is searched in a region around each of its first three harmonics. The centre offset and the width of each region were calibrated on training records of the matching class only, and the width also grows with the uncertainty of the measured speed. Shaft harmonics are protected by guard bands. The evidence of a region is its signal-to-noise ratio (SNR) relative to the median of a surrounding ring. The full definitions are given in protocols V2.3 and V2.4 (S1 File).
+
+A detected line is used as evidence only if it is identifiable, that is, if it can be separated from the nearest shaft harmonic. The identifiability margin is
+\begin{equation}
+\delta = \frac{\lvert f_0 - k f_r \rvert - g_k}{\Delta f},
+\label{eq:ident}
+\end{equation}
+where $f_0$ is the frequency of the detected peak, $k f_r$ the nearest shaft harmonic, $g_k$ its guard half-width and $\Delta f$ the frequency resolution. A harmonic is identifiable when the margin is at least one bin and the peak is a local maximum. With a Hann window, this condition places the peak outside the main lobe of the shaft line.
+
+Eight concepts are derived from the identifiable harmonics. For each family, they are the SNR of the fundamental, the mean SNR over the identifiable harmonics and the number of identifiable harmonics with an SNR of at least 6 dB. The remaining two concepts are the mean SNR of the shaft sidebands of BPFI and the contrast between the two families. Each concept has a validity mask, invalid concepts are set to zero, and the models receive the standardized concepts together with the masks. Seven label-free reliability features describe the quality of the evidence, for example the identifiability margins, the fraction of valid concepts and the largest family score. Concepts were computed on 1-s windows with a resolution of 1 Hz and on 4-s records with a resolution of 0.25 Hz. The earlier V2 definitions were retained for comparison.
+
+\subsection*{Models}
+All models output probabilities for the healthy, IR and OR classes, and bearing-level decisions use the mean probability over all windows of a bearing. Fig~\ref{fig2} shows the components, and the baselines and ablations are obtained by removing parts of this structure.
+
+\begin{figure}[!h]
+\caption{\textbf{Model architecture.} The physics lane computes envelope concepts from a 4-s record and feeds a linear head. The latent lane encodes 1-s windows with a CNN and adds a bounded term weighted by an evidence-quality gate. The physics-only models use the physics lane alone.}
+\label{fig2}
+\end{figure}
+
+The physics-only models comprise a rule and logistic models. The rule B0 marks a record as faulty when the largest valid family score exceeds a threshold chosen on the training records, and it assigns the fault class from the sign of the family contrast. B1-V2 is the logistic regression on the nine V2 concepts that served as the benchmark in earlier phases. B1-V3-1s and B1-V3-4s are logistic regressions on the V3 concepts and masks of 1-s windows and 4-s records, and B2-V3 is a two-layer multilayer perceptron (MLP) on 1-s concepts.
+
+The unconstrained CNN (B3) is a six-block one-dimensional network with about 0.23 million parameters that operates on 1-s raw windows decimated to 32 kHz. The models therefore differ in input as well as in architecture. The physics concepts are computed from the 64-kHz signal in the 1 to 20 kHz band, on 4-s records for B0, B1-V3-4s and A1 to A4, whereas the CNN sees 1-s windows with a bandwidth of at most 16 kHz. Each bearing-level decision uses all windows of the bearing, so the amount of data per decision is the same, but the context available to a single prediction is not. No matched-duration CNN or spectral baseline was trained.
+
+PAVE-Net (A4) combines a linear physics head on the concepts of the 4-s record that contains the window with a bounded latent contribution from the CNN encoder of B3. Its logits are
+\begin{equation}
+\ell = W_p [z, m] + b_p + \gamma (1 - g) B \tanh\left(\frac{W_l E_v(x)}{B}\right), \qquad g = \sigma\left(u^{\top} \tilde{q} + b_u\right),
+\label{eq:fusion}
+\end{equation}
+where $z$ and $m$ are the concepts and masks, $E_v$ is the CNN encoder applied to the window $x$, $\tilde{q}$ are the standardized reliability features, $\sigma$ is the logistic function, $B = 3$ bounds the latent term and $\gamma = 1$. The gate depends only on measurable evidence quality and never on the predicted class. The loss is the class-weighted cross-entropy plus a small penalty (weight 0.05) on the mean of one minus the gate, which acts as a weak prior towards the physics branch. The ablations remove components. A1, which is identical to B4, uses only the physics head, A2 adds the reliability features to the physics head, A3 keeps the bounded latent branch without the gate, and A5 adds selective diagnosis to A4. The concept bottleneck comparator (A6) lets the encoder predict the eight standardized concepts and classifies from the predicted concepts only, with a masked Huber loss on the concepts~\cite{koh2020concept}.
+
+Neural models were trained with AdamW~\cite{loshchilov2019decoupled}, a cosine schedule, class-weighted cross-entropy and mixed precision (Table~\ref{tab:config}). Seeds 42, 43 and 44 were set before model construction, and the mean probability of the three seeds is the primary prediction. For each model and outer fold, a temperature fitted on the pooled inner OOF windows was applied to the outer-test probabilities~\cite{guo2017calibration}.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Fixed training configurations (protocol V2.2).}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lllcc}
+\hline
+Model & Architecture & Optimization & Batch & Epochs \\
+\hline
+B1 (all) & logistic regression & C = 1, balanced classes, standardized & - & - \\
+B2-V3 & MLP $2 \times 64$, dropout 0.1 & AdamW & 256 & 20 \\
+B3 & CNN-1D, 6 blocks, 0.23 M parameters & AdamW, cosine schedule, AMP & 64 & 25 \\
+A1 to A4 & physics head, gate, bounded latent & AdamW, B = 3, $\gamma$ = 1, gate penalty 0.05 & 64 & 25 \\
+A6 & CNN-1D, 8 concepts, linear classifier & AdamW, concept loss weight 1 & 64 & 25 \\
+\hline
+\end{tabular}}
+\begin{flushleft} All AdamW runs used a learning rate of $10^{-3}$ and a weight decay of $10^{-2}$. Seeds 42, 43 and 44; class-weighted cross-entropy. AMP, automatic mixed precision; A6 uses a masked Huber loss on the concepts. \end{flushleft}
+\label{tab:config}
+\end{table}
+
+\subsection*{Architecture-inclusion rule}
+Protocols V2.2 and V2.3, frozen before any development-phase result was produced, specified that the latent branch would be kept only if A4 improved the bearing-level macro-F1 over A2 by at least 0.05 without increasing the window-level negative log-likelihood (NLL). Otherwise, the final model would be physics-only, namely B1-V3 with the better context length, with ties resolved in favour of 4 s. Protocol V2.2 had resolved ties in favour of 1 s, and V2.3 changed this choice. Both comparisons used the inner OOF predictions of seed 42 pooled over all five outer folds. These comprise 60 bearing-level predictions, in which each bearing appears four times.
+
+\subsection*{Physics-evidence verification}
+Physics-evidence verification (PEV) tests whether a model depends on the fault-frequency evidence named by its explanation. The evidence is suppressed in the envelope domain, and the change in the model output is measured. The band-limited signal is decomposed by the Hilbert transform into an envelope and a carrier. Within selected envelope bands, the envelope spectrum is reduced towards the local floor with the phase preserved, and the modified envelope is re-modulated and band-limited so that the change stays within the analysis band. Three intervention types were compared. Targeted suppression removes the calibrated regions of one family. A width-matched control removes bands of the same number and width at unrelated frequencies, and an energy-matched control widens these bands until the removed envelope energy equals that of the targeted removal. The interventions were applied to the first 4 s of five measurements per setting of every outer-test bearing, which gives 300 records. The primary contrast is the change in the true-class probability under targeted suppression minus the change under the energy-matched control, for the own family of each faulty bearing. It is averaged per bearing over the 10 faulty bearings, with bootstrap confidence intervals.
+
+Four properties are distinguished in this study. Model dependence means that the output changes under the intervention. Explanation faithfulness means that the evidence named by the explanation is the evidence on which the model depends. Physical validity means that this evidence arises from the bearing defect, and mechanical causality concerns the defect mechanism itself. The interventions test only the first two properties and do not show that a suppressed line was produced by the defect.
+
+\subsection*{Physics-evidence-aware selective diagnosis}
+Physics-evidence-aware selective diagnosis (PE-SD) ranks bearings for acceptance by four confidence scores. R1 is the maximum calibrated probability, and R2 is the negative entropy of the bearing-mean probability. R3 is an evidence clarity that does not depend on the prediction and combines the fraction of valid concepts with the distance of the largest family score from the B0 threshold. R4 is a logistic regression, fitted on inner OOF windows, that predicts correctness from the maximum probability, the fraction of valid concepts and the agreement between the evidence and the predicted class. Bearing-level risk-coverage curves, the area under them (AURC), the risk at the pre-specified coverages 12/15 and 9/15 and the area under the receiver operating characteristic curve (AUROC) for error detection are reported~\cite{geifman2017selective}.
+
+\subsection*{Shortcut analyses}
+For each outer fold, representations were extracted from the models of that fold, namely the B3 embedding, the A4 latent embedding and the A6 predicted concepts, together with the measured 4-s concepts. They were extracted for the 17 bearings that the training of the fold had not seen. Leave-one-bearing-out logistic regressions on bearing-mean representations predicted the manufacturer, the acquisition year and the damage origin, and window-level probes predicted the operating setting and the speed. Predictability of a nuisance shows that the information is present, not that the classifier uses it.
+
+\subsection*{Statistical analysis}
+The primary endpoint is the bearing-level macro-F1 of the three-seed ensemble on the 15 PU-BD5 bearings. Confidence intervals were obtained from 10\,000 class-stratified bootstrap resamples of bearings~\cite{efron1993introduction}. Paired differences against B1-V2 and B1-V3-4s were assessed by paired bootstrap resampling of bearings and by exact McNemar tests of bearing-level correctness. Secondary endpoints are balanced accuracy, per-class recall, fault sensitivity, the healthy false-alarm rate, the accuracy of fault localization, the window-level NLL, the expected calibration error (ECE, 15 bins) and the Brier score. All tests were two-sided with a significance level of 0.05. No correction for multiple comparisons was applied, because the paired comparisons were secondary and descriptive and none reached nominal significance. The sample size was set by the number of suitable bearings in the datasets rather than by a power calculation, and windows were never treated as independent units.
+
+On Ottawa the unit of decision is the recording. The primary set of 20 healthy, 5 IR and 5 OR recordings has a different class distribution from PU-BD5 (5/5/5). Macro-F1 depends on class prevalence through precision, so internal and external macro-F1 values are not directly comparable, and the prevalence-independent balanced accuracy is reported alongside. Analyses that were not specified before the corresponding results were seen are labelled post hoc. These are the fold-local re-application of the inclusion rule, the re-weighting of the reported confusion matrices to equal class counts and the inspection of the Ottawa false alarms. None of them involved retraining, new predictions or a second Ottawa evaluation.
+
+\subsection*{External validation protocol}
+After the development phase, the predefined models were retrained on all 15 PU-BD5 bearings with the fixed configurations, and the temperatures and the R4 score were fitted on the pooled PU outer-test predictions. The external protocol, the checkpoint hashes, the label mapping, the speed policy and the evaluation script were then frozen (S2 File). Ottawa was evaluated once without adaptation to its labels. The primary task used the healthy recordings of all 20 bearings and the faulty recordings of bearings 1 to 10, so bearings 1 to 10 each contribute a paired healthy and faulty recording. The developing-fault recordings formed a pre-specified secondary analysis, and the ball and cage recordings were treated as out of scope. Uncertainty was estimated by bootstrap resampling of the 20 bearings.
+
+A label-free audit before the freeze showed that the speed channel of every file is zero except for the first sample, which holds a single reading between 1700 and 2190 rpm. The frozen policy therefore took the shaft frequency from this reading and set the speed uncertainty to half the reading resolution (0.5 rpm). The preprocessing reused the development code, with two 4-s records per recording for the physics concepts, ten 1-s windows resampled to 32 kHz for the CNN and PU training statistics for standardization. The primary endpoint was the recording-level macro-F1 on the 30 primary recordings, and the primary model was the final model of the development phase. Pre-specified secondary analyses were a speed-uncertainty sensitivity analysis at 1\% of the shaft frequency, per-recording standardization for the CNN-based models, developing-fault detection, the predicted classes of the out-of-scope recordings, selective diagnosis with PU-frozen thresholds and PEV on the 10 faulty recordings. The evaluation script refused a second run.
+
+\subsection*{Software, code and data availability}
+All analyses were run in Python 3.10.6 with NumPy 1.26.4, SciPy 1.15.3, pandas 2.3.0, scikit-learn 1.4.1, PyTorch 2.7.1 (CUDA 12.6) and Matplotlib 3.10.9 on Windows 11 with an NVIDIA RTX 3060 Laptop GPU (6 GB). The analysis code with its 110 automated tests, the split manifests with the SHA-256 hashes of all original data files, the frozen protocols, the checkpoint hashes and all result tables are available at [REPOSITORY URL AND DOI]. The vibration datasets are public third-party datasets and are not redistributed. They can be obtained from their original sources~\cite{paderborn2016KAtData,sehri2023uoredData,jung2023kaistData}.
+
+\section*{Results}
+
+\subsection*{Identifiability of the fault evidence}
+For the 6203 geometries and speeds of PU-BD5, BPFO and BPFI lie within about 0.05 shaft orders of the third and fifth shaft harmonics. With 1-s windows, the analytic identifiability table gave a margin below one bin for every combination of family, speed and geometry, so no fault line could be separated from the adjacent shaft line. With 4-s records, all combinations were identifiable except BPFI of the FAG bearings at 900 rpm, which had a margin of 0.77 bins. This result motivated amendment V2.3. A label-free check then showed that the frozen region-based rule marked no 4-s family as identifiable, because it required the whole search region rather than the detected line to clear the guards. Amendment V2.4 replaced it with the line-based rule before any classification result of the development phase. Under this rule, 77\% (BPFO) and 87\% (BPFI) of the PU-BD5 4-s records had an identifiable family, compared with 78\% and 90\% of the Ottawa records (Fig~\ref{fig3}C).
+
+Fig~\ref{fig3}A shows typical envelope spectra. The healthy bearing shows several strong lines that do not coincide with the fault harmonics, the inner-race bearing shows lines near the BPFI harmonics, and the outer-race bearing shows a strong line at BPFO. Fig~\ref{fig3}B places every 4-s record by its BPFO and BPFI evidence. Many records of the inner-race bearings lie above the B0 threshold on the BPFI axis, and a large group of outer-race records lies far to the right on the BPFO axis. A part of both fault classes, however, overlaps with the healthy records near the origin. This overlap corresponds to the weak-evidence bearings described below.
+
+\begin{figure}[!h]
+\caption{\textbf{Physics evidence on PU-BD5.} (A) Envelope spectra of a healthy, an inner-race and an outer-race bearing at 1500 rpm. (B) BPFO and BPFI harmonic evidence for all 4-s records. (C) Fraction of 4-s records with an identifiable fault family.}
+\label{fig3}
+\end{figure}
+
+\subsection*{Bearing-level diagnosis on unseen PU bearings}
+Table~\ref{tab:baselines} and Fig~\ref{fig4} report the outer-test results on the 15 PU-BD5 bearings. B1-V3-4s reached a bearing-level macro-F1 of 0.780 (95\% CI 0.56 to 0.93), with recalls of 1.00, 1.00 and 0.40 for the healthy, IR and OR classes and no healthy false alarm. Its three errors were the weak-evidence outer-race bearings KA15, KA22 and KA30, which were all predicted as healthy (Fig~\ref{fig4}B). The physics head trained by gradient descent (A1, identical to B4) and its version with reliability features (A2) made the same bearing-level decisions. The same concepts computed on 1-s windows gave 0.648 (B1-V3-1s), in line with the identifiability analysis, and the previous V2 benchmark gave 0.739. The difference between B1-V3-4s and B1-V2 (+0.041, 95\% CI $-0.18$ to $+0.25$, exact McNemar $p = 1.0$) is not statistically supported (S2 Table). The rule B0 reached 0.655 and the CNN (B3) 0.611, and the difference between B3 and B1-V3-4s ($-0.169$, 95\% CI $-0.41$ to $+0.07$, $p = 0.375$) is not statistically supported either. As none of the paired comparisons reached significance, the ranking in Fig~\ref{fig4}A is descriptive. The calibrated window-level NLL of B1-V3-4s (0.625) was the lowest of all models. Fig~\ref{fig4}B also shows that the models containing the CNN encoder (B3, A3 and A4) misclassified a different set of bearings, which included one healthy bearing and three inner-race bearings.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Bearing-level results on PU-BD5.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llccccccccc}
+\hline
+Model & Input & Macro-F1 & 95\% CI & BA & Recall H/IR/OR & Sens. & FA & Window F1 & NLL & ECE \\
+\hline
+B0 (rule) & 4 s & 0.655 & [0.40, 0.87] & 0.667 & 1.00/0.60/0.40 & 0.60 & 0.00 & 0.658 & - & - \\
+B1-V2 & 1 s & 0.739 & [0.49, 0.93] & 0.733 & 0.80/0.80/0.60 & 0.80 & 0.20 & 0.646 & 0.757 & 0.064 \\
+B1-V3-1s & 1 s & 0.648 & [0.41, 0.87] & 0.667 & 0.60/1.00/0.40 & 0.90 & 0.40 & 0.362 & 1.063 & 0.032 \\
+B1-V3-4s & 4 s & 0.780 & [0.56, 0.93] & 0.800 & 1.00/1.00/0.40 & 0.70 & 0.00 & 0.729 & 0.625 & 0.064 \\
+B2-V3 (MLP) & 1 s & 0.591 & [0.33, 0.80] & 0.600 & 0.60/0.80/0.40 & 0.80 & 0.40 & 0.354 & 1.069 & 0.034 \\
+B3 (CNN) & raw & 0.611 & [0.37, 0.81] & 0.600 & 0.80/0.40/0.60 & 1.00 & 0.20 & 0.605 & 1.117 & 0.311 \\
+A1/B4 & 4 s & 0.780 & [0.56, 0.93] & 0.800 & 1.00/1.00/0.40 & 0.70 & 0.00 & 0.718 & 0.642 & 0.037 \\
+A2 & 4 s & 0.780 & [0.56, 0.93] & 0.800 & 1.00/1.00/0.40 & 0.70 & 0.00 & 0.682 & 0.704 & 0.075 \\
+A3 & 4 s + raw & 0.611 & [0.37, 0.81] & 0.600 & 0.80/0.40/0.60 & 1.00 & 0.20 & 0.605 & 1.025 & 0.280 \\
+A4 (PAVE-Net) & 4 s + raw & 0.611 & [0.37, 0.81] & 0.600 & 0.80/0.40/0.60 & 1.00 & 0.20 & 0.619 & 0.946 & 0.199 \\
+A6 (CBM) & raw & 0.733 & [0.52, 0.93] & 0.733 & 1.00/0.60/0.60 & 1.00 & 0.00 & 0.650 & 0.966 & 0.282 \\
+\hline
+\end{tabular}}
+\begin{flushleft} Outer-test results of three-seed ensembles on 15 bearings (5 H, 5 IR, 5 OR). Input: 4 s or 1 s, physics concepts of 4-s records or 1-s windows from the 64-kHz signal; raw, 1-s raw windows at 32 kHz (A6 uses 4-s concepts as training targets). CI, class-stratified bootstrap over bearings; BA, balanced accuracy; Sens., fault sensitivity; FA, healthy false-alarm rate; CBM, concept bottleneck model. NLL and ECE are window-level values after temperature scaling. Paired differences are given in S2 Table. \end{flushleft}
+\label{tab:baselines}
+\end{table}
+
+\begin{figure}[!h]
+\caption{\textbf{Bearing-level classification on PU-BD5.} (A) Macro-F1 with 95\% bootstrap confidence intervals. (B) Probability of the true class for each held-out bearing, with rows in the order of panel A.}
+\label{fig4}
+\end{figure}
+
+\subsection*{Contribution of the latent branch}
+The pre-specified inclusion rule compared A4 and A2 on the pooled inner OOF predictions. A4 reached a bearing-level macro-F1 of 0.541 against 0.687 for A2, with a higher window NLL (1.389 against 0.774). The latent branch was therefore not kept, and the final model was B1-V3-4s, whose inner OOF macro-F1 was 0.704 against 0.600 for the 1-s version. Because the pooled decision drew on bearings that serve as test bearings in other folds, the same rule was re-applied post hoc within each outer fold, using only the 12 inner OOF predictions of that fold. Every fold excluded the latent branch and selected B1-V3-4s. In fold O4 this choice came from the tie-break, with an equal inner macro-F1 of 0.676 for the 1-s and 4-s versions. A fold-local procedure would therefore have produced the same outer-test predictions and the same macro-F1 of 0.780 (S3 File).
+
+The outer-test results in Table~\ref{tab:ablation} are consistent with this decision. Adding the bounded latent branch, with or without the gate, lowered the macro-F1 from 0.780 to 0.611 and the number of correctly classified weak-evidence bearings from 3 of 6 to 2 of 6. The gate behaved as intended. Its mean value, which is the weight of the physics branch, was 0.52 to 0.63 on the four strong-evidence bearings and 0.36 to 0.43 on the weak-evidence and healthy bearings. On these bearings the latent branch therefore dominated, but it did not supply the missing evidence. The concept bottleneck A6 reached 0.733, with a higher NLL (0.966) and ECE (0.282) than the physics-only models.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Ablation study on PU-BD5.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llcccccc}
+\hline
+ID & Component & Outer & Weak & Strong & Outer & Inner & Inner \\
+ & & macro-F1 & correct & correct & NLL & macro-F1 & NLL \\
+\hline
+A0 & physics rule & 0.655 & 1/6 & 4/4 & - & - & - \\
+A1 & V3 concepts, linear head & 0.780 & 3/6 & 4/4 & 0.642 & 0.762 & 0.709 \\
+A2 & + evidence reliability & 0.780 & 3/6 & 4/4 & 0.704 & 0.687 & 0.774 \\
+A3 & + bounded latent, no gate & 0.611 & 2/6 & 3/4 & 1.025 & 0.542 & 2.352 \\
+A4 & full gated fusion & 0.611 & 2/6 & 3/4 & 0.946 & 0.541 & 1.389 \\
+A6 & concept bottleneck & 0.733 & 3/6 & 3/4 & 0.966 & 0.548 & 2.565 \\
+\hline
+\end{tabular}}
+\begin{flushleft} Weak-evidence bearings: KA15, KA22, KA30, KI14, KI16, KI21; strong-evidence bearings: KA04, KA16, KI04, KI18. Inner values pool 60 bearing predictions of the inner OOF sets over the five outer folds and formed the basis of the inclusion rule. A5 (A4 with PE-SD) is reported in Table 7. \end{flushleft}
+\label{tab:ablation}
+\end{table}
+
+\subsection*{Physics-evidence verification}
+Targeted suppression of the own family of a faulty bearing reduced the family evidence by 9.3 dB more than the energy-matched control (95\% CI 5.7 to 12.9 dB, 10 of 10 bearings), and the width-matched control gave the same result (Table~\ref{tab:pev} and Fig~\ref{fig5}A). The true-class probability fell by 0.409 for B1-V3-4s (95\% CI 0.21 to 0.62) and by 0.386 for A2 in every faulty bearing. The record-level prediction changed in 46\% (B1-V3-4s) and 48\% (A2) of the targeted records, compared with about 2\% under the controls. In PAVE-Net (A4) the effect was smaller ($-0.103$, 95\% CI $-0.18$ to $-0.04$) and passed entirely through the physics logit ($-1.11$), while the latent contribution did not change consistently ($+0.13$, 95\% CI $-0.17$ to $+0.42$). The concept bottleneck A6 was almost insensitive ($-0.008$), and the CNN (B3) showed no measurable change ($+0.005$), as Fig~\ref{fig5}C illustrates.
+
+The interventions were local. The in-band SNR of the modified signal was 31 to 42 dB, clipping affected at most 7.7\% of the samples, and out-of-band changes were at most 1.5\%. The energy-matched control removed a median of 1.19 times the targeted energy, with a 10th percentile of 0.50. Within the tested bands, the predictions of the physics models therefore depended on the evidence named by their explanations, which supports model dependence and explanation faithfulness. These results do not show that the suppressed lines were produced by the defects. The insensitivity of B3 and A6 indicates only that their outputs do not respond to these narrow bands, not that they use no physically meaningful information.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Physics-evidence verification on the 10 faulty PU-BD5 bearings.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lcccccc}
+\hline
+ & \multicolumn{3}{c}{Energy-matched control} & \multicolumn{3}{c}{Width-matched control} \\
+Quantity & T minus C & 95\% CI & T $<$ C & T minus C & 95\% CI & T $<$ C \\
+\hline
+Target-family evidence (dB) & -9.288 & [-12.895, -5.744] & 10/10 & -9.054 & [-12.339, -5.639] & 10/10 \\
+$\Delta$p, B1-V3-4s & -0.409 & [-0.623, -0.206] & 10/10 & -0.409 & [-0.626, -0.209] & 10/10 \\
+$\Delta$p, A2 & -0.386 & [-0.585, -0.205] & 10/10 & -0.385 & [-0.583, -0.203] & 10/10 \\
+$\Delta$p, A4 (PAVE-Net) & -0.103 & [-0.183, -0.042] & 10/10 & -0.100 & [-0.177, -0.042] & 10/10 \\
+$\Delta$p, A6 (CBM) & -0.008 & [-0.018, -0.001] & 9/10 & -0.007 & [-0.016, -0.001] & 9/10 \\
+$\Delta$p, B3 (CNN) & +0.005 & [+0.000, +0.011] & 3/10 & +0.005 & [-0.000, +0.013] & 5/10 \\
+A4 physics logit & -1.108 & [-1.503, -0.701] & 10/10 & -1.107 & [-1.499, -0.702] & 10/10 \\
+A4 latent contribution & +0.127 & [-0.166, +0.424] & 4/10 & +0.130 & [-0.163, +0.423] & 4/10 \\
+\hline
+\end{tabular}}
+\begin{flushleft} Own fault family, suppression strength 1.0. Bearing means over 20 records per bearing; bootstrap CI over bearings. T minus C, targeted suppression minus control; $\Delta$p, change in the probability of the true class; T $<$ C, number of bearings with a lower value under targeted suppression than under the control; CBM, concept bottleneck model. \end{flushleft}
+\label{tab:pev}
+\end{table}
+
+\begin{figure}[!h]
+\caption{\textbf{Physics-evidence verification.} (A, B) Change in own-family evidence under targeted suppression and matched controls for the faulty PU bearings and Ottawa recordings. (C) Change in the probability of the true class, targeted minus energy-matched control, with 95\% confidence intervals.}
+\label{fig5}
+\end{figure}
+
+\subsection*{Selective diagnosis}
+For B1-V3-4s, which made three bearing-level errors, the maximum probability R1 ranked the errors best (AURC 0.075), and the physics-evidence-aware score R4 (0.114) did not improve on it (Table~\ref{tab:selective} and Fig~\ref{fig6}A). For PAVE-Net (A4) with six errors, the probabilities ranked the errors poorly (R1 AURC 0.367, error-detection AUROC 0.50). For this model, R4 lowered the AURC to 0.148 and raised the error-detection AUROC to 0.89 (Fig~\ref{fig6}B), and at a coverage of 9/15 it accepted two errors instead of four. Physics-evidence-aware scoring therefore helped when the confidence of the classifier was uninformative, but not for the best-calibrated physics model.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Selective diagnosis on PU-BD5.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llccccc}
+\hline
+Base model & Score & AURC & Risk at 12/15 & Risk at 9/15 & AUROC & Errors \\
+\hline
+A4 & R1 & 0.367 & 0.417 (5) & 0.444 (4) & 0.500 & 6 \\
+A4 & R2 & 0.401 & 0.417 (5) & 0.444 (4) & 0.426 & 6 \\
+A4 & R3 & 0.234 & 0.333 (4) & 0.333 (3) & 0.722 & 6 \\
+A4 & R4 & 0.148 & 0.333 (4) & 0.222 (2) & 0.889 & 6 \\
+B1-V3-4s & R1 & 0.075 & 0.167 (2) & 0.111 (1) & 0.778 & 3 \\
+B1-V3-4s & R2 & 0.114 & 0.167 (2) & 0.222 (2) & 0.667 & 3 \\
+B1-V3-4s & R3 & 0.146 & 0.250 (3) & 0.333 (3) & 0.500 & 3 \\
+B1-V3-4s & R4 & 0.114 & 0.250 (3) & 0.222 (2) & 0.611 & 3 \\
+\hline
+\end{tabular}}
+\begin{flushleft} R1, maximum probability; R2, negative entropy; R3, evidence clarity; R4, physics-evidence-aware score fitted on inner OOF predictions. Risk at coverages 12/15 and 9/15, with the number of accepted errors in parentheses. AUROC, area under the ROC curve for error detection. \end{flushleft}
+\label{tab:selective}
+\end{table}
+
+\begin{figure}[!h]
+\caption{\textbf{Risk-coverage curves on PU-BD5.} (A) B1-V3-4s. (B) PAVE-Net (A4). Dotted lines mark the pre-specified coverages 9/15 and 12/15.}
+\label{fig6}
+\end{figure}
+
+\subsection*{Nuisance information in representations}
+On bearings unseen by the models of each fold, the manufacturer could be predicted from the CNN embedding with a mean AUROC of 0.94, from the A4 latent embedding with 0.87 and from the A6 predicted concepts with 0.93, compared with 0.71 from the measured V3 concepts (Table~\ref{tab:probes}). The learned representations also encoded the operating speed and setting more strongly than the measured concepts. The acquisition year, however, was more predictable from the measured concepts (0.90) than from the learned representations (0.76 to 0.84), so the measured concepts are not free of nuisance information.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Nuisance information in physics concepts and learned representations.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lcccc}
+\hline
+Target & V3 concepts & A6 predicted & B3 CNN & A4 latent \\
+ & (measured) & concepts & embedding & embedding \\
+\hline
+Manufacturer & 0.71 [0.58, 0.85] & 0.93 [0.88, 0.95] & 0.94 [0.91, 0.97] & 0.87 [0.82, 0.91] \\
+Year & 0.90 [0.84, 0.98] & 0.76 [0.62, 0.99] & 0.82 [0.73, 0.89] & 0.84 [0.72, 0.99] \\
+Damage origin & 0.46 [0.11, 0.67] & 0.59 [0.28, 0.86] & 0.75 [0.61, 1.00] & 0.84 [0.75, 0.97] \\
+Speed (window) & 0.62 [0.57, 0.70] & 0.84 [0.72, 0.96] & 0.93 [0.86, 0.99] & 0.90 [0.85, 0.94] \\
+Setting (window, accuracy) & 0.30 [0.28, 0.34] & 0.46 [0.36, 0.56] & 0.49 [0.45, 0.54] & 0.45 [0.41, 0.48] \\
+\hline
+\end{tabular}}
+\begin{flushleft} Bearings unseen by the models of each fold. Mean [min, max] over the five outer folds. Bearing-level targets: leave-one-bearing-out AUROC (chance 0.5); setting: four-class window accuracy (chance 0.25). Presence of information does not imply that a classifier uses it. \end{flushleft}
+\label{tab:probes}
+\end{table}
+
+\subsection*{Single external evaluation on Ottawa}
+On the 30 primary Ottawa recordings, B1-V3-4s reached a recording-level macro-F1 of 0.518 (95\% CI 0.31 to 0.68), which is lower than its internal estimate (Table~\ref{tab:external} and Fig~\ref{fig7}A). All five IR recordings were recognized, but only two of the five OR recordings, and 11 of the 20 healthy recordings were classified as faulty, mostly as IR (Fig~\ref{fig7}B). The fault sensitivity was 0.90, 78\% of the detected faults were localized correctly, and the calibration transferred poorly (window NLL 2.11, ECE 0.35). The rule B0 had the highest macro-F1 (0.614, 95\% CI 0.45 to 0.72), followed by B4 (0.557) and A2 (0.500). Every model containing the CNN encoder (B3, A3, A4 and A6) classified all 20 healthy recordings as faulty, with macro-F1 between 0.28 and 0.31 (Fig~\ref{fig7}C). These models nevertheless localized most faults, with IR recalls of 0.6 to 0.8 and OR recalls of 1.0. Their balanced accuracy (0.53 to 0.60) was therefore close to that of B1-V3-4s (0.62) and higher than that of the 1-s V3 concept models (0.47). Their lower macro-F1 mainly reflects the healthy class, which forms two-thirds of the primary set. Per-recording standardization raised A4 to 0.459 but did not help B3 or A6. With the speed uncertainty widened to 1\% of the shaft frequency, B1-V3-4s lost all IR recognition (macro-F1 0.270), because the wider shaft guards made BPFI unidentifiable.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Single external evaluation on Ottawa.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lccccccccc}
+\hline
+Model & Macro-F1 & 95\% CI & BA & Recall H/IR/OR & FA & Sens. & Loc. & NLL & ECE \\
+\hline
+B0 (rule) & 0.614 & [0.45, 0.72] & 0.717 & 0.55/1.00/0.60 & 0.45 & 0.90 & 0.89 & - & - \\
+B1-V2 & 0.417 & [0.26, 0.55] & 0.650 & 0.15/1.00/0.80 & 0.85 & 0.90 & 1.00 & 1.213 & 0.205 \\
+B1-V3-1s & 0.330 & [0.15, 0.49] & 0.467 & 0.20/0.80/0.40 & 0.80 & 0.90 & 0.67 & 1.100 & 0.096 \\
+B1-V3-4s * & 0.518 & [0.31, 0.68] & 0.617 & 0.45/1.00/0.40 & 0.55 & 0.90 & 0.78 & 2.110 & 0.351 \\
+B2-V3 (MLP) & 0.329 & [0.17, 0.48] & 0.467 & 0.20/0.80/0.40 & 0.80 & 0.90 & 0.67 & 1.104 & 0.134 \\
+B3 (CNN) & 0.311 & [0.18, 0.41] & 0.600 & 0.00/0.80/1.00 & 1.00 & 1.00 & 0.90 & 2.285 & 0.226 \\
+A1/B4 & 0.557 & [0.39, 0.67] & 0.683 & 0.45/1.00/0.60 & 0.55 & 0.90 & 0.89 & 1.569 & 0.310 \\
+A2 & 0.500 & [0.32, 0.64] & 0.617 & 0.45/1.00/0.40 & 0.55 & 0.90 & 0.78 & 1.289 & 0.280 \\
+A3 & 0.277 & [0.13, 0.39] & 0.533 & 0.00/0.60/1.00 & 1.00 & 1.00 & 0.80 & 1.425 & 0.296 \\
+A4 (PAVE-Net) & 0.300 & [0.18, 0.38] & 0.600 & 0.00/0.80/1.00 & 1.00 & 1.00 & 0.90 & 1.534 & 0.332 \\
+A6 (CBM) & 0.306 & [0.18, 0.39] & 0.600 & 0.00/0.80/1.00 & 1.00 & 1.00 & 0.90 & 4.698 & 0.595 \\
+\hline
+B1-V3-4s, 1\% speed & 0.270 & [0.15, 0.38] & 0.283 & 0.45/0.00/0.40 & 0.55 & 1.00 & 0.20 & 1.581 & 0.258 \\
+B3, per recording & 0.222 & [0.12, 0.32] & 0.350 & 0.25/0.00/0.80 & 0.75 & 0.50 & 0.80 & 1.318 & 0.313 \\
+A4, per recording & 0.459 & [0.31, 0.57] & 0.650 & 0.15/0.80/1.00 & 0.85 & 0.90 & 1.00 & 1.334 & 0.253 \\
+A6, per recording & 0.247 & [0.15, 0.34] & 0.417 & 0.25/0.00/1.00 & 0.75 & 0.70 & 0.71 & 1.782 & 0.348 \\
+\hline
+\end{tabular}}
+\begin{flushleft} 30 primary recordings from 20 bearings. * Primary model, fixed before Ottawa was analysed. CI, bootstrap over bearings; BA, balanced accuracy; FA, healthy false-alarm rate; Sens., fault sensitivity; Loc., IR/OR accuracy among detected faults; CBM, concept bottleneck model. The last four rows are pre-specified secondary analyses: 1\% speed, speed uncertainty widened to 1\% of the shaft frequency; per recording, per-recording input standardization. NLL and ECE are window-level values after PU-fitted temperature scaling. \end{flushleft}
+\label{tab:external}
+\end{table}
+
+\begin{figure}[!h]
+\caption{\textbf{Single external evaluation on Ottawa.} (A) Internal and external macro-F1, which differ in unit and class distribution. (B) Confusion matrix of B1-V3-4s. (C) Healthy false-alarm rate.}
+\label{fig7}
+\end{figure}
+
+The internal and external macro-F1 values (0.78 and 0.52) are not directly comparable, and their difference should not be attributed to domain shift alone. The class distribution differs, with 5/5/5 bearings against 20/5/5 recordings, so each healthy false alarm lowers the precision of a fault class more on Ottawa than on PU. Re-weighting the reported Ottawa confusion matrix of B1-V3-4s to equal class counts, a post hoc calculation without new predictions, gives a macro-F1 of 0.60 instead of 0.52 (S3 File). The amount of data per decision also differs. A PU decision averages about 80 measurements of 4 s over four operating settings, whereas an Ottawa decision rests on a single 10-s recording at one speed. In addition, ten Ottawa bearings contribute both a healthy and a faulty recording, and the healthy state of a run-to-failure test need not match the healthy PU bearings. The prevalence-independent balanced accuracy fell from 0.80 to 0.62. This decrease corresponds to the rise of the healthy false-alarm rate from 0 to 0.55, while the IR and OR recalls were the same in both datasets (1.00 and 0.40).
+
+In the secondary analyses (S3 to S5 Tables), B1-V3-4s detected 9 of 10 developing faults and assigned 6 of them to the correct type. It classified 8 of 10 faulty ball and cage recordings as healthy, as expected for a model without ball or cage concepts. The CNN-based models detected every developing fault, which is uninformative because they also flagged every healthy recording. None of the PU-frozen confidence scores separated correct from incorrect B1-V3-4s decisions on Ottawa (error-detection AUROC 0.43 to 0.48), because the false alarms were confident, while the evidence clarity R3 identified the errors of A4 well (AUROC 0.92). In PEV on the 10 faulty Ottawa recordings, targeted suppression lowered the own-family evidence by 12.7 dB relative to the energy-matched control (Fig~\ref{fig5}B). It lowered the true-class probability of B1-V3-4s by 0.31 (95\% CI 0.09 to 0.68) and that of A4 by 0.22 (95\% CI 0.16 to 0.27) in all 10 recordings, again through the physics logit of A4, while B3 was unaffected (Fig~\ref{fig5}C). The in-band SNR of the modified Ottawa signals (median 13.9 dB) was lower than on PU, so these interventions were coarser.
+
+A post hoc inspection of the false alarms, which does not replace the primary result, showed where they occurred. All five healthy recordings of the bearings that later developed inner-race faults (bearings 1 to 5) were flagged, compared with 2 of 5 for the later outer-race bearings and 4 of 10 for the ball and cage bearings. The median BPFI evidence of these five healthy recordings was 12.2 dB, above the PU healthy median of 9.2 dB. Fig~\ref{fig8} contrasts correct and incorrect decisions. In the PU outer-race bearing KA16 (Fig~\ref{fig8}A), a strong line coincides with the kinematic BPFO and is clearly separated from the third shaft harmonic. In the missed bearing KA30 (Fig~\ref{fig8}B), the line near BPFO is weak and hardly distinguishable from neighbouring noise peaks. In the Ottawa inner-race recording (Fig~\ref{fig8}C), a strong line lies close to the kinematic BPFI. In the healthy Ottawa recording with a false alarm (Fig~\ref{fig8}D), the model used a line about 1\% below the kinematic BPFI, inside the calibrated search region but not at the kinematic frequency. Whether such lines reflect incipient damage early in the run-to-failure test, a component of the test rig or another source cannot be decided from the available data, so the association between these lines and the false alarms is descriptive.
+
+\begin{figure}[!h]
+\caption{\textbf{Correct and incorrect decisions of B1-V3-4s.} Envelope spectra (left) and zooms around the fundamental of the relevant fault family (right) for two PU bearings (A, B) and two Ottawa recordings (C, D). The interpretation of C and D is post hoc.}
+\label{fig8}
+\end{figure}
+
+\subsection*{Computational cost}
+The physics heads have 51 to 72 parameters and need 0.05 to 0.06 ms per window on a CPU, and the extraction of the V3 concepts of a 4-s record takes about 30 ms. The CNN-based models have about 0.23 million parameters, need 1.6 to 1.9 ms per window on a CPU, train in about 35 s per seed and outer fold and use at most 247 MB of GPU memory (Table~\ref{tab:efficiency}). All experiments fitted on a laptop GPU with 6 GB of memory.
+
+\begin{table}[!ht]
+\centering
+\caption{\textbf{Computational cost.}}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llccccc}
+\hline
+Model & Device & Parameters & Latency & Latency & Training & Peak GPU \\
+ & & & median (ms) & p95 (ms) & time (s) & memory (MB) \\
+\hline
+B2 & cuda & 5443 & 0.18 & 0.26 & 0.6 & 18 \\
+B2 & cpu & 5443 & 0.06 & 0.06 & 0.6 & 18 \\
+B3 & cuda & 225539 & 1.01 & 1.17 & 34.7 & 246 \\
+B3 & cpu & 225539 & 1.64 & 1.99 & 34.7 & 246 \\
+B4 & cuda & 51 & 0.19 & 0.27 & 3.1 & 44 \\
+B4 & cpu & 51 & 0.05 & 0.08 & 3.1 & 44 \\
+A2 & cuda & 72 & 0.23 & 0.27 & 2.7 & 44 \\
+A2 & cpu & 72 & 0.06 & 0.06 & 2.7 & 44 \\
+A3 & cuda & 225590 & 1.28 & 1.48 & 35.5 & 247 \\
+A3 & cpu & 225590 & 1.91 & 2.26 & 35.5 & 247 \\
+A4 & cuda & 225598 & 1.59 & 2.80 & 36.1 & 247 \\
+A4 & cpu & 225598 & 1.74 & 2.08 & 36.1 & 247 \\
+A6 & cuda & 226211 & 1.15 & 1.50 & 35.3 & 247 \\
+A6 & cpu & 226211 & 1.70 & 2.10 & 35.3 & 247 \\
+V3 concept extraction (4 s) & cpu & 0 & 30.15 & 32.49 & - & - \\
+\hline
+\end{tabular}}
+\begin{flushleft} Batch-1 inference on one 1-s window; training time per model and seed on 12 bearings (RTX 3060 Laptop GPU). \end{flushleft}
+\label{tab:efficiency}
+\end{table}
+
+\section*{Discussion}
+
+\subsection*{Principal findings}
+This study examined whether physically meaningful vibration evidence supports reliable and verifiable bearing diagnosis on bearings not seen in training. Four findings emerge. First, the record length determined whether the fault evidence was usable. For 6203 bearings the fault orders lie so close to integer shaft orders that 1-s windows cannot separate them, while 4-s records can. A logistic model on identifiability-masked 4-s concepts gave the highest point estimate on the 15 unseen PU bearings, although none of the pairwise differences was statistically supported. Second, a learned latent branch, even when bounded and gated by evidence quality, did not improve bearing-level diagnosis. A rule fixed before the development experiments excluded it, and the same choice resulted when the rule was applied within each outer fold. Third, controlled envelope-domain interventions showed that the predictions of the physics-based models depend on the evidence named by their explanations, whereas the outputs of the CNN and the concept bottleneck did not respond to it. Fourth, in a single evaluation on an independent dataset, the 4-s physics models degraded and produced many confident false alarms. Their macro-F1 remained higher than that of the CNN-based models, which flagged every healthy recording, but their balanced accuracy was similar.
+
+\subsection*{Answers to the research questions}
+The first research question receives partial support. The 4-s concepts gave the highest internal point estimate and the lowest NLL, and they carried less manufacturer, speed and setting information than the learned representations. They are not free of nuisance information, however, since the acquisition year was more predictable from them than from the CNN embedding. The internal advantages over the V2 concepts (+0.041) and over the CNN (+0.169) lie within the uncertainty of a 15-bearing benchmark. The comparison with the CNN also involves different input lengths and bandwidths, so it does not isolate the effect of physics constraints.
+
+The second research question is not supported. Gated fusion did not help the weak-evidence bearings, and compared with the physics head it misclassified one more weak-evidence, one more strong-evidence and one more healthy bearing. The gate favoured the physics branch when the evidence was strong, as intended, but on weak-evidence bearings the latent branch contributed information that did not generalize across bearings. This information may be specific to the bearing or the manufacturer, as the probes suggest, although the probes cannot show that the classifier uses it. With 12 training bearings per fold, a learned encoder has very few independent examples from which to learn fault-specific rather than bearing-specific features. This interpretation agrees with reports that the number of distinct training bearings governs generalization~\cite{vieira2026towards,wheat2024impact}.
+
+The third research question is supported for the physics-based models in the sense of model dependence and explanation faithfulness. The energy-matched control is important here, because without it a drop in probability could be attributed to the amount of removed energy rather than to its location. The test separates models whose stated evidence is the evidence they use (B1-V3-4s, A2 and the physics branch of A4) from models whose output does not move when that evidence is removed (B3 and A6). It does not establish what the insensitive models rely on, whether the named lines arise from the defect, or anything about the defect mechanism. It is thus a test of explanation faithfulness in the sense of Jacovi and Goldberg~\cite{jacovi2020towards}, with controls designed against the failure modes reported for saliency methods~\cite{adebayo2018sanity,hooker2019benchmark}.
+
+The fourth research question gives a mixed answer. Physics-evidence-aware scoring improved the risk-coverage behaviour of the poorly calibrated fusion model, but it did not help the best physics model, whose own probability was already the better ranking score. On Ottawa, no score detected the errors of the primary model, because its false alarms were confident and backed by apparently valid evidence. Selective diagnosis cannot catch errors that the evidence itself appears to support.
+
+The fifth research question is not supported at the level of accuracy. The macro-F1 of the primary model fell from 0.78 to 0.52, its balanced accuracy from 0.80 to 0.62, and its healthy false-alarm rate rose from 0 to 0.55. Part of the macro-F1 difference reflects the class distribution and the unit of decision rather than domain shift. Two aspects of the result are nevertheless informative. The dependence of the model on the physics evidence was preserved on Ottawa, and because the decision is tied to named spectral lines, the false alarms could be inspected at the level of specific envelope lines near BPFI, which is not possible for the CNN-based models. The ranking of the model families was preserved for macro-F1 but not for balanced accuracy, and the 1-s physics models performed no better than the CNN-based models.
+
+\subsection*{Comparison with prior work}
+The closest prior study applied a physics-guided statistical rule, calibrated on healthy references, to the same two datasets~\cite{siddique2026physics}. On Ottawa it reported a 5\% healthy false-alarm rate but detected no inner-race faults and 20\% of the outer-race faults, and it attributed part of this result to the use of the nominal speed. With the per-file speed reading, the models of the present study detected nearly all faults but raised many false alarms. The two studies differ in task, decision rule, calibration and recording selection, so their numbers are not directly comparable. Taken together, they suggest that physics-based diagnosis transferred from PU to Ottawa faces a trade-off between sensitivity and false alarms, which appears to depend on speed accuracy and on the level of background evidence on a new test rig. The sensitivity analysis makes the speed dependence explicit, since widening the assumed speed uncertainty from 0.5 rpm to 1\% of the shaft frequency removed all inner-race recognition. Bearing-disjoint evaluation studies have shown that segment-level splits can inflate accuracy considerably~\cite{hendriks2022towards,wheat2024impact,vieira2026towards}. The internal results of the present study, with macro-F1 values of 0.61 to 0.78 and wide confidence intervals, and the external decrease are consistent with that literature and with the shortcut concerns raised for deep networks~\cite{geirhos2020shortcut,kapoor2023leakage}.
+
+\subsection*{Possible sources of the external false alarms}
+The false alarms were concentrated in the healthy recordings of the bearings that later developed inner-race faults, and their BPFI evidence exceeded the PU healthy range. This observation is post hoc and descriptive, and at least two explanations are compatible with the data. The healthy state of a run-to-failure test may already contain incipient damage, in which case some alarms would be early detections that the labels do not credit. Alternatively, a component of the Ottawa test rig may produce envelope lines within about 1\% of BPFI, which the calibrated search region of up to 3.5\% accepts as fault evidence. The available data do not allow a choice between these or other explanations. In either case, the rule B0, which thresholds the strongest valid family, raised fewer false alarms than the logistic models. One possible reading, not tested here, is that the learned weights of the concept classifiers, fitted on 15 PU bearings, transfer less well than a single threshold.
+
+\subsection*{Implications}
+For practitioners, the results suggest using records of 4 s or longer at the speeds studied before fault-frequency evidence is trusted, checking identifiability against shaft harmonics explicitly and verifying the healthy evidence level on site before deployment. For method developers, the results favour verifying explanations by intervention rather than by inspection, keeping the bearing as the unit of analysis and fixing architecture decisions before evaluation, preferably within each outer fold so that the outer test remains independent of the selection. In this study the inclusion rule was applied to pooled inner predictions, and its post hoc fold-local re-application gave the same choice.
+
+\section*{Conclusions}
+This study examined whether physically meaningful vibration evidence supports verifiable diagnosis on bearings not seen in training. On 15 Paderborn bearings, a small linear model on identifiability-masked 4-s envelope concepts gave the highest point estimate among the compared models, which included an unconstrained CNN, a concept bottleneck and a physics-anchored fusion model, although none of the differences was statistically supported. Envelope-domain interventions with matched controls showed that the predictions of this model depend on the fault-frequency evidence named in its explanation. In a single external evaluation on 20 Ottawa bearings, the model kept this dependence but raised many confident false alarms. Physics-audited evidence therefore made the dependence of the model testable and its errors inspectable, but it did not by itself make the diagnosis transferable across test rigs.
+
+These conclusions rest on small samples, with 15 development bearings and 20 external bearings, so the confidence intervals are wide. The development bearings had also been used in the baseline phase, so the internal estimates may be optimistic, and the protocols were frozen internally rather than registered publicly. The physics models and the CNN differ in input length and bandwidth, the concepts cover only inner-race and outer-race faults, and the physics pipeline depends on an accurate speed reading.
+
+Future work could estimate the shaft speed from the vibration signal, calibrate the healthy evidence level on the target machine and add concepts for ball and cage faults. Matched-duration baselines, architecture selection within each outer fold and larger bearing-disjoint benchmarks registered in advance would make the comparison between physics evidence and learned features more conclusive.
+
+\section*{Supporting information}
+
+\paragraph*{S1 File.}
+\label{S1_File}
+\textbf{Development protocols.} Research protocols V2, V2.1, V2.2, V2.3 and V2.4 with their freeze records, including SHA-256 hashes, timestamps and the results inspected at each amendment.
+
+\paragraph*{S2 File.}
+\label{S2_File}
+\textbf{External validation protocol.} Protocol EV-V1 for the Ottawa evaluation, its freeze record with the hashes of the protocol, code, fold outputs and 21 frozen checkpoints, and the evaluation lock record.
+
+\paragraph*{S3 File.}
+\label{S3_File}
+\textbf{Post hoc sensitivity analyses.} Scripts and outputs of the fold-local re-application of the architecture-inclusion rule and of the re-weighting of the reported confusion matrices to equal class counts. Both use only stored predictions.
+
+\paragraph*{S1 Table.}
+\label{S1_Table}
+\textbf{Related-work matrix.} Comparison of the present study with closely related work.
+
+\paragraph*{S2 Table.}
+\label{S2_Table}
+\textbf{Paired bearing-level differences on PU-BD5.} Differences in macro-F1 with paired bootstrap intervals and exact McNemar tests.
+
+\paragraph*{S3 Table.}
+\label{S3_Table}
+\textbf{Ottawa secondary analyses.} Developing-fault detection and the predicted classes of the ball and cage recordings.
+
+\paragraph*{S4 Table.}
+\label{S4_Table}
+\textbf{Ottawa selective diagnosis.} Recording-level risk-coverage results with PU-frozen scores and thresholds.
+
+\paragraph*{S5 Table.}
+\label{S5_Table}
+\textbf{Physics-evidence verification on Ottawa.} Targeted minus energy-matched control effects on the 10 faulty recordings.
+
+\section*{Acknowledgments}
+The authors would like to express their sincere appreciation to the Vietnam Aerospace University for supporting this research during the 2026-2027 academic year.
+
+\nolinenumbers
+
+\bibliography{verified_references}
+
+\end{document}

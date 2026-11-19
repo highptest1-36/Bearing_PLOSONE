@@ -1,0 +1,69 @@
+[23:49:33] A_test0Nm physics: regions {'centre': {'BPFO': 0.01962140194548255, 'BPFI': -0.01191920619284895}, 'half': {'BPFO': 0.012989659718058487, 'BPFI': 0.005000000000000001}, 'n_used': {'BPFO': 276, 'BPFI': 276}, 'fallback': {'BPFO': False, 'BPFI': False}} | test AUROC {'auroc_contrast_OR_vs_IR': 1.0, 'auroc_family_damaged_vs_healthy': 1.0}
+[23:49:33] A_test0Nm|3way|S1_speed_LR|s42: test win macroF1 0.222 group acc [0.429]
+[23:49:33] A_test0Nm|3way|S2_rms_LR|s42: test win macroF1 0.886 group acc [0.857]
+[23:49:34] A_test0Nm|3way|C1_hand_RF|s42: test win macroF1 1.000 group acc [1.0]
+[23:49:34] A_test0Nm|3way|C2_hand_SVM|s42: test win macroF1 1.000 group acc [1.0]
+[23:49:34] A_test0Nm|3way|P1_phys_LR|s42: test win macroF1 1.000 group acc [1.0]
+[23:49:43] A_test0Nm|3way|D1_cnn_raw|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (4s)
+[23:49:46] A_test0Nm|3way|D1_cnn_raw|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:49:49] A_test0Nm|3way|D1_cnn_raw|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:49:53] A_test0Nm|3way|D2_cnn_order|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:49:56] A_test0Nm|3way|D2_cnn_order|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:49:58] A_test0Nm|3way|D2_cnn_order|s44: ep 1 val 1.000 test win macroF1 0.996 group acc [1.0] (2s)
+[23:50:01] A_test0Nm|3way|D3_cnn_order_rmsnorm|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:03] A_test0Nm|3way|D3_cnn_order_rmsnorm|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:05] A_test0Nm|3way|D3_cnn_order_rmsnorm|s44: ep 2 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:06] A_test0Nm|7way|C1_hand_RF|s42: test win macroF1 1.000 group acc [1.0]
+[23:50:06] A_test0Nm|7way|P1_phys_LR|s42: test win macroF1 0.872 group acc [1.0]
+[23:50:09] A_test0Nm|7way|D1_cnn_raw|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:11] A_test0Nm|7way|D1_cnn_raw|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:13] A_test0Nm|7way|D1_cnn_raw|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:15] A_test0Nm|7way|D2_cnn_order|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:17] A_test0Nm|7way|D2_cnn_order|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:19] A_test0Nm|7way|D2_cnn_order|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:22] A_test2Nm physics: regions {'centre': {'BPFO': 0.019564670436587252, 'BPFI': -0.012037738286418149}, 'half': {'BPFO': 0.012710492129956362, 'BPFI': 0.005000000000000001}, 'n_used': {'BPFO': 276, 'BPFI': 276}, 'fallback': {'BPFO': False, 'BPFI': False}} | test AUROC {'auroc_contrast_OR_vs_IR': 1.0, 'auroc_family_damaged_vs_healthy': 1.0}
+[23:50:22] A_test2Nm|3way|S1_speed_LR|s42: test win macroF1 0.655 group acc [0.571]
+[23:50:22] A_test2Nm|3way|S2_rms_LR|s42: test win macroF1 0.886 group acc [0.857]
+[23:50:23] A_test2Nm|3way|C1_hand_RF|s42: test win macroF1 1.000 group acc [1.0]
+[23:50:23] A_test2Nm|3way|C2_hand_SVM|s42: test win macroF1 1.000 group acc [1.0]
+[23:50:23] A_test2Nm|3way|P1_phys_LR|s42: test win macroF1 1.000 group acc [1.0]
+[23:50:26] A_test2Nm|3way|D1_cnn_raw|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:29] A_test2Nm|3way|D1_cnn_raw|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:31] A_test2Nm|3way|D1_cnn_raw|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:34] A_test2Nm|3way|D2_cnn_order|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:36] A_test2Nm|3way|D2_cnn_order|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:38] A_test2Nm|3way|D2_cnn_order|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:40] A_test2Nm|3way|D3_cnn_order_rmsnorm|s42: ep 0 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:42] A_test2Nm|3way|D3_cnn_order_rmsnorm|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:44] A_test2Nm|3way|D3_cnn_order_rmsnorm|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:45] A_test2Nm|7way|C1_hand_RF|s42: test win macroF1 1.000 group acc [1.0]
+[23:50:45] A_test2Nm|7way|P1_phys_LR|s42: test win macroF1 0.993 group acc [1.0]
+[23:50:48] A_test2Nm|7way|D1_cnn_raw|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:51] A_test2Nm|7way|D1_cnn_raw|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:50:53] A_test2Nm|7way|D1_cnn_raw|s44: ep 0 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:56] A_test2Nm|7way|D2_cnn_order|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:50:59] A_test2Nm|7way|D2_cnn_order|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:51:01] A_test2Nm|7way|D2_cnn_order|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:51:05] A_test4Nm physics: regions {'centre': {'BPFO': 0.014983857416894914, 'BPFI': -0.01197749562508885}, 'half': {'BPFO': 0.02001614258310509, 'BPFI': 0.005000000000000001}, 'n_used': {'BPFO': 276, 'BPFI': 276}, 'fallback': {'BPFO': False, 'BPFI': False}} | test AUROC {'auroc_contrast_OR_vs_IR': 1.0, 'auroc_family_damaged_vs_healthy': 1.0}
+[23:51:05] A_test4Nm|3way|S1_speed_LR|s42: test win macroF1 0.789 group acc [1.0]
+[23:51:05] A_test4Nm|3way|S2_rms_LR|s42: test win macroF1 0.886 group acc [0.857]
+[23:51:06] A_test4Nm|3way|C1_hand_RF|s42: test win macroF1 1.000 group acc [1.0]
+[23:51:06] A_test4Nm|3way|C2_hand_SVM|s42: test win macroF1 1.000 group acc [1.0]
+[23:51:06] A_test4Nm|3way|P1_phys_LR|s42: test win macroF1 1.000 group acc [1.0]
+[23:51:10] A_test4Nm|3way|D1_cnn_raw|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:12] A_test4Nm|3way|D1_cnn_raw|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (2s)
+[23:51:15] A_test4Nm|3way|D1_cnn_raw|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:19] A_test4Nm|3way|D2_cnn_order|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:22] A_test4Nm|3way|D2_cnn_order|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:25] A_test4Nm|3way|D2_cnn_order|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:30] A_test4Nm|3way|D3_cnn_order_rmsnorm|s42: ep 0 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:32] A_test4Nm|3way|D3_cnn_order_rmsnorm|s43: ep 0 val 1.000 test win macroF1 0.889 group acc [0.857] (2s)
+[23:51:35] A_test4Nm|3way|D3_cnn_order_rmsnorm|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:37] A_test4Nm|7way|C1_hand_RF|s42: test win macroF1 1.000 group acc [1.0]
+[23:51:37] A_test4Nm|7way|P1_phys_LR|s42: test win macroF1 0.869 group acc [0.857]
+[23:51:40] A_test4Nm|7way|D1_cnn_raw|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:43] A_test4Nm|7way|D1_cnn_raw|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:46] A_test4Nm|7way|D1_cnn_raw|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
+[23:51:51] A_test4Nm|7way|D2_cnn_order|s42: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (5s)
+[23:51:55] A_test4Nm|7way|D2_cnn_order|s43: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (4s)
+[23:51:59] A_test4Nm|7way|D2_cnn_order|s44: ep 1 val 1.000 test win macroF1 1.000 group acc [1.0] (3s)
