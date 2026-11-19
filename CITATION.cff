@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Code, protocols and results for verifiable bearing fault diagnosis with physically grounded vibration evidence"
+type: software
+authors:
+  - family-names: "Ha"
+    given-names: "Cao-Phuc"
+    affiliation: "Department of Artificial Intelligence, FPT University, Ho Chi Minh City, Vietnam"
+    orcid: "https://orcid.org/0009-0004-7024-5166"
+    email: "caophucai@gmail.com"
+license: MIT
+repository-code: "https://github.com/highptest1-36/Bearing_PLOSONE"
+version: "1.0.0"
+date-released: "2026-11-19"
+keywords:
+  - bearing fault diagnosis
+  - vibration analysis
+  - envelope spectrum
+  - explainability
+  - external validation

@@ -1,0 +1,24 @@
+{
+  "title": "Code, protocols and results for verifiable bearing fault diagnosis with physically grounded vibration evidence",
+  "upload_type": "software",
+  "description": "Analysis code, frozen research protocols, data manifests with SHA-256 hashes and result tables for the study on physically grounded vibration evidence for verifiable bearing fault diagnosis on unseen bearings. The study evaluates envelope-spectrum concepts with identifiability checks on 15 Paderborn bearings by nested bearing-disjoint cross-validation, tests model dependence on the named fault-frequency evidence by targeted interventions with matched controls, and reports a single external evaluation on 20 University of Ottawa bearings. The third-party vibration datasets are not included and can be obtained from their original sources.",
+  "creators": [
+    {
+      "name": "Ha, Cao-Phuc",
+      "affiliation": "Department of Artificial Intelligence, FPT University, Ho Chi Minh City, Vietnam",
+      "orcid": "0009-0004-7024-5166"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "bearing fault diagnosis",
+    "vibration analysis",
+    "envelope spectrum",
+    "physics-informed machine learning",
+    "explainability",
+    "bearing-disjoint evaluation",
+    "external validation"
+  ],
+  "access_right": "open",
+  "language": "eng"
+}
